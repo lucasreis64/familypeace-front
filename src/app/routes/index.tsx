@@ -1,3 +1,4 @@
+import { Sign } from 'crypto';
 import {
   BrowserRouter as Router,
   Routes as Paths,
@@ -15,6 +16,7 @@ export const Routes = () => {
       <UserProvider>
         <Paths>
           <Route path="/sign-in" element={<SignIn />} />
+          <Route path="*" element={<Navigate to="/sign-in" />} />
         </Paths>
       </UserProvider>
     </Router>
