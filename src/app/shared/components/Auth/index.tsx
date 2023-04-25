@@ -48,6 +48,7 @@ export const Logo = styled.div<DivProps>`
   }
   animation: ${(props) => (props.loading ? 'none' :deslizarCima)} ${time}, ${tremerZoom} ${'500ms'} 1 ${time};
   opacity: 0.7;
+  margin-bottom: 30px;
   &:hover{
     opacity: 1;
   }
@@ -65,6 +66,7 @@ export const Input = styled.input`
   backdrop-filter: blur(4.6px);
   -webkit-backdrop-filter: blur(4.6px);
   border: 1px solid #cadbe9;
+  color: rgba(252, 253, 253, 0.7);
   &::placeholder {
         font-weight: 400;
         font-size: 20px;

@@ -57,9 +57,9 @@ export const SignIn = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <Button loading= { signInLoading } >Entrar</Button>
+            <Button loading= { signInLoading } >Sign-in</Button>
             <Label>
-              Permanecer conectado?
+              Keep Me Logged In!
               <Check
                 src={stayLoggedIn ? checkMarked : checkEmpty}
                 onClick={() => setStayLoggedIn(!stayLoggedIn)}
@@ -91,14 +91,14 @@ export const SignIn = () => {
             />
             <Button loading={signInLoading} disabled>{loading}</Button>
             <Label>
-              Permanecer conectado?
+              Keep Me Logged In!
               <Check
                 src={stayLoggedIn ? checkMarked : checkEmpty}
               />
             </Label>
           </form>
           <Link to="/sign-up">
-            <P>Primeira vez? Cadastre-se!</P>
+            <P>New user? Sign-up!</P>
           </Link>
         </>
       )}
