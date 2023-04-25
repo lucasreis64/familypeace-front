@@ -2,13 +2,13 @@ import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { Button, Check, Input, Label, loading, Logo, P } from '../../shared/components/Auth';
+import { Button, Check, Input, Label, Loading, Logo, P } from '../../shared/components/Auth';
 import { UserContext } from '../../shared/contexts';
 import { useSignIn } from '../../shared/hooks/api/useSignIn';
 import { AuthLayout } from '../../shared/layouts/Auth';
 import checkEmpty from '../../assets/images/check-empty.png';
 import checkMarked from '../../assets/images/check-marked.png';
-import lotusFlower from '../../assets/images/lotusflower.png';
+import lotusFlower from '../../assets/images/lotusflower-spaced.png';
 let timeMs: number;
 
 export const SignIn = () => {
@@ -52,7 +52,7 @@ export const SignIn = () => {
             <Input
               name="password"
               type="password"
-              placeholder="senha"
+              placeholder="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -84,12 +84,12 @@ export const SignIn = () => {
             <Input
               name="password"
               type="password"
-              placeholder="senha"
+              placeholder="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               disabled
             />
-            <Button loading={signInLoading} disabled>{loading}</Button>
+            <Button loading={signInLoading} disabled><Loading /></Button>
             <Label>
               Keep Me Logged In!
               <Check
@@ -106,7 +106,18 @@ export const SignIn = () => {
   );
 };
 
+export function restartTime() {
+  timeMs = 400;
+  console.log('oi');
+}
+
 export function time() {
   timeMs += 50;
+  console.log(timeMs);
   return timeMs + 'ms';
+}
+
+export function timeBefore() {
+  const timeBeforeMs = timeMs - 50;
+  return timeBeforeMs + 'ms';
 }

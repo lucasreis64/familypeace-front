@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { deslizarCima, tremerZoom } from '../../animations/animations';
+import { deslizarCima, VanishBeforeAnimation, ZoomInLeftAnimation } from '../../animations/animations';
 import { ThreeDots } from 'react-loader-spinner';
 import Container from '../Container';
-import { time } from '../../../pages/Sign-in';
+import { time, timeBefore } from '../../../pages/Sign-in';
 
 export const StyledContainer = styled(Container)`
   display: flex;
@@ -20,18 +20,19 @@ export const StyledContainer = styled(Container)`
   border: 1px solid rgba(255, 255, 255, 0.75);
   form{
     display: flex;
-        flex-direction: column;
-        gap: 6px;
-        width: 100%;
-        gap: 10px;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    gap: 10px;
   }
   &:hover{
     background: rgba(75, 120, 155, 0.4);
   }
 `;
+
 interface DivProps {
   loading: boolean;
-}
+};
 
 export const Logo = styled.div<DivProps>`
   h1{
@@ -46,7 +47,7 @@ export const Logo = styled.div<DivProps>`
     height: 50px;
     margin-bottom: -25px;
   }
-  animation: ${(props) => (props.loading ? 'none' :deslizarCima)} ${time}, ${tremerZoom} ${'500ms'} 1 ${time};
+  animation: ${(props) => (props.loading ? 'none' : VanishBeforeAnimation)} ${time}, ${ZoomInLeftAnimation} ${'500ms'} 1 ${timeBefore};
   opacity: 0.7;
   margin-bottom: 30px;
   &:hover{
@@ -141,7 +142,7 @@ export const P = styled.p`
   }
 `;
 
-export const loading = (
+export const Loading = () => (
   <ThreeDots
     height="80"
     width="80"

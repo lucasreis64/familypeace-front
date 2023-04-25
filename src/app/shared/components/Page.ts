@@ -11,16 +11,22 @@ export const Page = styled.div<DivProps>`
     0% {
         background-position: 0% 50%
     }
-    50% {
-        background-position: 100% 50%
+    25% {
+        background-position: 50% 0%
     }
-    100% {
-        background-position: 0% 50%
+    50%{
+      background-position: 100% 50%
     }
-}
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  animation: Gradient 7s ease infinite;
-  background-size: 200% 200%;
+    75% {
+        background-position: 50% 100%
+    }
+    100%{
+      background-position: 0% 50%
+    }
+  }
+  background: linear-gradient(-45deg, rgba(51,215,228,1) 17%, rgba(107,57,205,1) 41%, rgba(13,177,204,1) 65%, rgba(166,49,204,1) 85%);
+  animation: Gradient 15s ease infinite;
+  background-size: 300% 300%;
   box-sizing: border-box;
   height: 100vh;
   width: 100vw;
