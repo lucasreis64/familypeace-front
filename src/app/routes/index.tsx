@@ -1,4 +1,3 @@
-import { Sign } from 'crypto';
 import {
   BrowserRouter as Router,
   Routes as Paths,
@@ -6,12 +5,13 @@ import {
   Navigate
 } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { SignIn } from '../pages/Sign-in';
 import { UserProvider } from '../shared/contexts';
 
 export const Routes = () => {
   return (
-    <Router>        
+    <Router>
       <ToastContainer />
       <UserProvider>
         <Paths>

@@ -19,10 +19,11 @@ export const Page = styled.div<DivProps>`
     }
 }
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  animation: Gradient 15s ease infinite;
-  background-size: 400% 400%;
-  min-height: 100vh;
-  width: 100%;
+  animation: Gradient 7s ease infinite;
+  background-size: 200% 200%;
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100vw;
   padding: 20px;
   display: flex;
   justify-content: center;

@@ -1,11 +1,13 @@
-import { UsuarioLogadoProvider } from './shared/contexts';
+import { UserProvider } from './shared/contexts';
 import { Routes } from './routes';
+import GlobalStyle from './shared/components/GlobalStyles';
 
 export const App = () => {
   return (
-    <UsuarioLogadoProvider>
+    <UserProvider>
+      <GlobalStyle />
       <Routes />
-    </UsuarioLogadoProvider>
+    </UserProvider>
   );
 };
 
