@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import useSignUp from '../../shared/hooks/api/useSignUp';
@@ -6,7 +6,6 @@ import lotusFlower from '../../assets/images/lotusflower-spaced.png';
 import { Button, Input, Loading, Logo, P } from '../../shared/components/Auth';
 import { AuthLayout } from '../../shared/layouts/Auth';
 import { Link } from 'react-router-dom';
-import { restartTime } from '../Sign-in';
 
 export default function SignUp() {
   const [email, setEmail] = useState('');
@@ -15,8 +14,6 @@ export default function SignUp() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const { signUpLoading, signUp } = useSignUp();
   const navigate = useNavigate();
-
-  useEffect(() => restartTime(), []);
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -36,7 +33,7 @@ export default function SignUp() {
 
   return (
     <AuthLayout>
-      <Logo className = 'logo' loading = { signUpLoading }>
+      <Logo className = 'logo' loading = { signUpLoading.toString() }>
         <img src={lotusFlower} alt=""/>
         <h1>FamilyPeace</h1>
       </Logo>
@@ -75,7 +72,7 @@ export default function SignUp() {
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
-            <Button loading= { signUpLoading } >Sign-up</Button>
+            <Button loading= { signUpLoading.toString() } >Sign-up</Button>
           </form>
           <Link to="/sign-in">
             <P>Already signed-up? Sign-in!</P>
@@ -116,7 +113,7 @@ export default function SignUp() {
               onChange={(e) => setConfirmPassword(e.target.value)}
               disabled
             />
-            <Button loading={signUpLoading} disabled><Loading /></Button>
+            <Button loading={signUpLoading.toString()} disabled><Loading /></Button>
           </form>
           <Link to="/sign-in">
             <P>Already signed-up? Sign-in!</P>

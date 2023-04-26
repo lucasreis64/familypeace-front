@@ -9,7 +9,7 @@ import { AuthLayout } from '../../shared/layouts/Auth';
 import checkEmpty from '../../assets/images/check-empty.png';
 import checkMarked from '../../assets/images/check-marked.png';
 import lotusFlower from '../../assets/images/lotusflower-spaced.png';
-let timeMs: number;
+export let timeMs: number;
 
 export const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -34,7 +34,7 @@ export const SignIn = () => {
 
   return (
     <AuthLayout>
-      <Logo loading = { signInLoading }>
+      <Logo loading = { signInLoading.toString() }>
         <img src={lotusFlower} alt=""/>
         <h1>FamilyPeace</h1>
       </Logo>
@@ -57,7 +57,7 @@ export const SignIn = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <Button loading= { signInLoading } >Sign-in</Button>
+            <Button loading= { signInLoading.toString() } >Sign-in</Button>
             <Label>
               Keep Me Logged In!
               <Check
@@ -66,7 +66,7 @@ export const SignIn = () => {
               />
             </Label>
           </form>
-          <Link to="/sign-up">
+          <Link onClick={() => timeMs = 400} to="/sign-up">
             <P>New user? Sign-up!</P>
           </Link>
         </>
@@ -89,7 +89,7 @@ export const SignIn = () => {
               onChange={(e) => setPassword(e.target.value)}
               disabled
             />
-            <Button loading={signInLoading} disabled><Loading /></Button>
+            <Button loading={signInLoading.toString()} disabled><Loading /></Button>
             <Label>
               Keep Me Logged In!
               <Check
@@ -106,14 +106,10 @@ export const SignIn = () => {
   );
 };
 
-export function restartTime() {
-  timeMs = 400;
-  console.log('oi');
-}
-
 export function time() {
+  if(!timeMs) 
+    timeMs=400;
   timeMs += 50;
-  console.log(timeMs);
   return timeMs + 'ms';
 }
 

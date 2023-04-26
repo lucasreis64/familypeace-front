@@ -31,7 +31,7 @@ export const StyledContainer = styled(Container)`
 `;
 
 interface DivProps {
-  loading: boolean;
+  loading: string;
 };
 
 export const Logo = styled.div<DivProps>`
@@ -47,7 +47,7 @@ export const Logo = styled.div<DivProps>`
     height: 50px;
     margin-bottom: -25px;
   }
-  animation: ${(props) => (props.loading ? 'none' : VanishBeforeAnimation)} ${time}, ${ZoomInLeftAnimation} ${'500ms'} 1 ${timeBefore};
+  animation: ${(props) => (props.loading === 'true' ? 'none' : VanishBeforeAnimation)} ${time}, ${ZoomInLeftAnimation} ${'500ms'} 1 ${timeBefore};
   opacity: 0.7;
   margin-bottom: 30px;
   &:hover{
@@ -99,7 +99,7 @@ export const Button = styled.button<ButtonProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: ${(props) => (props.loading ? 'none' :deslizarCima)} ${time};
+  animation: ${(props) => (props.loading === 'true' ? 'none' :deslizarCima)} ${time};
   margin-top: 10px;
   &:hover{
     background: rgba(75, 120, 155, 0.2);
