@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { deslizarCima, tremerZoom, VanishBeforeAnimation, ZoomInLeftAnimation } from '../../animations/animations';
 import { ThreeDots } from 'react-loader-spinner';
 import Container from '../Container';
-import { time, timeBefore } from '../../../pages/Sign-in';
+import { time } from '../../../pages/Sign-in';
 
 export const StyledContainer = styled(Container)`
   display: flex;
@@ -15,8 +15,6 @@ export const StyledContainer = styled(Container)`
   background: rgba(75, 120, 155, 0.3);
   border-radius: 16px;
   box-shadow: 10px 20px 30px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4.6px);
-  -webkit-backdrop-filter: blur(4.6px);
   form{
     display: flex;
     flex-direction: column;
@@ -64,7 +62,7 @@ export const Input = styled.input`
   background: rgba(75, 120, 155, 0.3);
   border-radius: 16px;
   box-shadow: 7px 3px 15px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(4.6px);
+    backdrop-filter: blur(4.6px);
   -webkit-backdrop-filter: blur(4.6px);
   border: 0px solid #cadbe9;
   color: rgba(252, 253, 253, 0.7);
@@ -93,7 +91,7 @@ export const Button = styled.button<ButtonProps>`
   background: rgba(75, 120, 155, 0.0);
   border-radius: 16px;
   box-shadow: 7px 3px 15px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(4.6px);
+    backdrop-filter: blur(4.6px);
   -webkit-backdrop-filter: blur(4.6px);
   border: 1px solid rgba(252, 252, 252, 0.2);
   display: flex;

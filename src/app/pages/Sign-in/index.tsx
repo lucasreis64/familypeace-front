@@ -83,8 +83,3 @@ export function time() {
   timeMs += 50;
   return timeMs + 'ms';
 }
-
-export function timeBefore() {
-  const timeBeforeMs = timeMs - 50;
-  return timeBeforeMs + 'ms';
-}
