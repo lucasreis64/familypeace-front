@@ -1,12 +1,13 @@
 import { createContext, useState } from 'react';
 import React from 'react';
 import { useLocalStorage } from '../hooks';
+import { userDataParams } from '../../../protocols';
 
 interface UserContextData {
-  userData: string;
-  setUserData: React.Dispatch<React.SetStateAction<string>>;
-  stayLoggedIn: boolean;
-  setStayLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+  userData: userDataParams;
+  setUserData: React.Dispatch<React.SetStateAction<userDataParams>>;
+  contextUserData: userDataParams | {};
+  setContextUserData: React.Dispatch<React.SetStateAction<userDataParams>>;
 }
 
 export const UserContext = createContext<UserContextData>({} as UserContextData);
@@ -17,15 +18,15 @@ interface UserProps {
 
 export const UserProvider: React.FC<UserProps> = ({ children }) => {
   const [userData, setUserData] = useLocalStorage('userData', {});
-  const [stayLoggedIn, setStayLoggedIn] = useState(false);
+  const [contextUserData, setContextUserData] = useState({});
   
   return (
     <UserContext.Provider
       value={{
         userData,
         setUserData,
-        stayLoggedIn,
-        setStayLoggedIn
+        contextUserData,
+        setContextUserData
       }}
     >
       {children}

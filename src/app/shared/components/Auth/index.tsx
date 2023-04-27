@@ -107,7 +107,7 @@ export const Button = styled.button<ButtonProps>`
   animation: ${(props) => (props.loading === 'true' ? 'none' : deslizarCima)} ${time};
   margin-top: 10px;
   &:hover{
-    background: rgba(75, 120, 155, 0.2);
+    background: rgba(75, 120, 155, 0.4);
   }
 `;
 

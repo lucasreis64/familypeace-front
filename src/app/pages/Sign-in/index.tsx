@@ -15,16 +15,18 @@ export const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { signInLoading, signIn } = useSignIn();
-  const { setUserData, stayLoggedIn, setStayLoggedIn } = useContext(UserContext);
+  const [stayLoggedIn, setStayLoggedIn] = useState(false);
+  const { setUserData, setContextUserData } = useContext(UserContext);
   const navigate = useNavigate();
   timeMs = 400;
   
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
     try {
       const userData = await signIn(email, password);
-      setUserData(userData);
+      setContextUserData(userData);
+      if(stayLoggedIn)
+        setUserData(userData);
       toast.success('Login realizado com sucesso!');
       navigate('/dashboard');
     } catch (err) {
