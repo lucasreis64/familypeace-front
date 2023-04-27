@@ -17,8 +17,9 @@ export const SignIn = () => {
   const { signInLoading, signIn } = useSignIn();
   const [stayLoggedIn, setStayLoggedIn] = useState(false);
   const { setUserData, setContextUserData } = useContext(UserContext);
+  const [ dropAnimation, setDropAnimation ] = useState(false);
   const navigate = useNavigate();
-  timeMs = 400;
+  timeMs = 900;
   
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -34,8 +35,17 @@ export const SignIn = () => {
     }
   };
 
+  async function goToSignUp() {
+    timeMs = 900;
+    setDropAnimation(true);
+    setTimeout(() => {
+      setDropAnimation(false);
+      navigate('sign-up');
+    }, 1000);
+  }
+
   return (
-    <AuthLayout>
+    <AuthLayout dropAnimation = {dropAnimation}>
       <Logo loading = { signInLoading.toString() }>
         <img src={lotusFlower} alt=""/>
         <h1>FamilyPeace</h1>
@@ -71,9 +81,7 @@ export const SignIn = () => {
       {signInLoading?
         <P>New user? Sign-up!</P>
         :
-        <Link onClick={() => timeMs = 400} to="/sign-up">
-          <P>New user? Sign-up!</P>
-        </Link>
+        <P onClick={goToSignUp}>New user? Sign-up!</P>
       }
     </AuthLayout>
   );

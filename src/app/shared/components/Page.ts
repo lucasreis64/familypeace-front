@@ -39,6 +39,15 @@ export const Page = styled.div<DivProps>`
     text-align: center;
   }
 
+  overflow: hidden !important;
+  ::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    display: none !important;
+  }
+
   @media (max-width: 600px) {
     padding: 0;
     background-size: 300% 100%;

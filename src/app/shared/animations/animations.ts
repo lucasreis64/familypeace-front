@@ -72,7 +72,7 @@ export const deslizarCima= keyframes`
         to{opacity:1;transform: translateY(0px)}
     `;
 
-export const rolarCair = keyframes`
+export const hangThenDrop = keyframes`
         0% {
             transform-origin: top left;
             animation-timing-function: ease-in-out;
@@ -172,11 +172,34 @@ export const ZoomInLeftAnimation = keyframes`
     }
 `;
 
-export const VanishBeforeAnimation = keyframes`
-        from{
-            opacity:0;transform: translateY(-600px)
-        }
-        to{
-            opacity:0;transform: translateY(0px)
-        }
+export const ZoomOutDownAnimation = keyframes`
+    40% {
+        opacity: 1;
+        transform: scale3d(.475, .475, .475) translate3d(0, -60px, 0);
+        animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+    }
+    to {
+        opacity: 0;
+        transform: scale3d(.1, .1, .1) translate3d(0, 2000px, 0);
+        transform-origin: center bottom;
+        animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+    }
+`;
+
+export const HiddenFall= keyframes`
+        from{opacity:0;transform: translateY(-600px)}
+        to{opacity:0;transform: translateY(0px)}
+    `;
+
+export const ZoomInDownAnimation = keyframes`
+    from {
+        opacity: 0;
+        transform: scale3d(.1, .1, .1) translate3d(0, -1000px, 0);
+        animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+    }
+    60% {
+        opacity: 1;
+        transform: scale3d(.475, .475, .475) translate3d(0, 60px, 0);
+        animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+    }
 `;

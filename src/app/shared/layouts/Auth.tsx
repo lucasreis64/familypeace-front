@@ -3,13 +3,14 @@ import { StyledContainer } from '../components/Auth';
 import React from 'react';
 
 interface AuthProps {
-  children: React.ReactNode
+  children: React.ReactNode;
+  dropAnimation: boolean;
 };
 
-export const AuthLayout: React.FC<AuthProps> = ({ children }) => {
+export const AuthLayout: React.FC<AuthProps> = ({ children, dropAnimation }) => {
   return (
     <Page>
-      <StyledContainer>
+      <StyledContainer dropAnimation = {dropAnimation}>
         {children}
       </StyledContainer>
     </Page>

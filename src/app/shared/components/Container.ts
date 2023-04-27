@@ -3,6 +3,7 @@ import styled from 'styled-components';
 interface DivProps {
   height?: string;
   width?: string;
+  dropAnimation?: boolean;
 }
 
 export default styled.div<DivProps>`

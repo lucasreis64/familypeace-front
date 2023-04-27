@@ -13,6 +13,7 @@ export default function SignUp() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const { signUpLoading, signUp } = useSignUp();
+  const [ dropAnimation, setDropAnimation ] = useState(false);
   const navigate = useNavigate();
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
@@ -31,8 +32,16 @@ export default function SignUp() {
     }
   }
 
+  async function goToSignIn() {
+    setDropAnimation(true);
+    setTimeout(() => {
+      setDropAnimation(false);
+      navigate('sign-in');
+    }, 1000);
+  }
+
   return (
-    <AuthLayout>
+    <AuthLayout dropAnimation = {dropAnimation}>
       <Logo className = 'logo' loading = { signUpLoading.toString() }>
         <img src={lotusFlower} alt=""/>
         <h1>FamilyPeace</h1>
@@ -79,9 +88,7 @@ export default function SignUp() {
       {signUpLoading?
         <P>Already signed-up? Sign-in!</P>
         :
-        <Link to="/sign-in">
-          <P>Already signed-up? Sign-in!</P>
-        </Link>
+        <P onClick={goToSignIn}>Already signed-up? Sign-in!</P>
       }
     </AuthLayout>
   );

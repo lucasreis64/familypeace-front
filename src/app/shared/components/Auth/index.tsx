@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { deslizarCima, tremerZoom, ZoomInLeftAnimation } from '../../animations/animations';
+import { deslizarCima, HiddenFall, tremerZoom, ZoomInDownAnimation, ZoomInLeftAnimation, ZoomOutDownAnimation } from '../../animations/animations';
 import { ThreeDots } from 'react-loader-spinner';
 import Container from '../Container';
 import { time } from '../../../pages/Sign-in';
@@ -11,7 +11,7 @@ export const StyledContainer = styled(Container)`
   justify-content: center;
   padding: 30px;
   box-sizing: border-box;
-  animation: ${deslizarCima} ${time};
+  animation: ${ props =>  props.dropAnimation ? ZoomOutDownAnimation : ZoomInDownAnimation } ${ props =>  props.dropAnimation ? '1000ms' : '1000ms' };
   background: rgba(75, 120, 155, 0.3);
   border-radius: 16px;
   box-shadow: 10px 20px 30px rgba(0, 0, 0, 0.5);
@@ -53,7 +53,7 @@ export const Logo = styled.div<DivProps>`
     margin-bottom: -25px;
     filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.6));
   }
-  animation: ${(props) => (props.loading === 'true' ? tremerZoom : 'none')} ${time}, ${ZoomInLeftAnimation} ${'1000ms'} 1 ${'none'};
+  animation: ${(props) => (props.loading === 'true' ? tremerZoom : HiddenFall)} ${time}, ${ZoomInLeftAnimation} ${'1000ms'} 1 ${'400ms'};
   margin-bottom: 30px;
   &:hover{
     opacity: 1;
