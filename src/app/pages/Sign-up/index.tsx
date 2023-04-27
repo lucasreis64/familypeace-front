@@ -37,89 +37,52 @@ export default function SignUp() {
         <img src={lotusFlower} alt=""/>
         <h1>FamilyPeace</h1>
       </Logo>
-      {!signUpLoading ? (
-        <>
-          <form action="" onSubmit={submit}>
-            <Input
-              name="name"
-              type="name"
-              placeholder="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-            <Input
-              name="email"
-              type="email"
-              placeholder="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <Input
-              name="password"
-              type="password"
-              placeholder="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <Input
-              name="password"
-              type="password"
-              placeholder="confirm password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-            />
-            <Button loading= { signUpLoading.toString() } >Sign-up</Button>
-          </form>
-          <Link to="/sign-in">
-            <P>Already signed-up? Sign-in!</P>
-          </Link>
-        </>
-      ) : (
-        <>
-          <form action="" onSubmit={submit}>
-            <Input
-              name="name"
-              type="name"
-              placeholder="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              disabled
-            />
-            <Input
-              name="email"
-              type="email"
-              placeholder="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              disabled
-            />
-            <Input
-              name="password"
-              type="password"
-              placeholder="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              disabled
-            />
-            <Input
-              name="password"
-              type="password"
-              placeholder="confirm password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              disabled
-            />
-            <Button loading={signUpLoading.toString()} disabled><Loading /></Button>
-          </form>
-          <Link to="/sign-in">
-            <P>Already signed-up? Sign-in!</P>
-          </Link>
-        </>
-      )}
+      <form action="" onSubmit={submit}>
+        <Input
+          name="name"
+          type="name"
+          placeholder="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+          disabled = {signUpLoading}
+        />
+        <Input
+          name="email"
+          type="email"
+          placeholder="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          disabled = {signUpLoading}
+        />
+        <Input
+          name="password"
+          type="password"
+          placeholder="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          disabled = {signUpLoading}
+        />
+        <Input
+          name="password"
+          type="password"
+          placeholder="confirm password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          required
+          disabled = {signUpLoading}
+        />
+        <Button loading= { signUpLoading.toString() } disabled = {signUpLoading}>{signUpLoading? <Loading /> : 'Sign-up'}</Button>
+      </form>
+      {signUpLoading?
+        <P>Already signed-up? Sign-in!</P>
+        :
+        <Link to="/sign-in">
+          <P>Already signed-up? Sign-in!</P>
+        </Link>
+      }
     </AuthLayout>
   );
 }

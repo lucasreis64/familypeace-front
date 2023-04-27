@@ -173,10 +173,10 @@ export const ZoomInLeftAnimation = keyframes`
 `;
 
 export const VanishBeforeAnimation = keyframes`
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 0;
-    }
+        from{
+            opacity:0;transform: translateY(-600px)
+        }
+        to{
+            opacity:0;transform: translateY(0px)
+        }
 `;

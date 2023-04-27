@@ -24,9 +24,9 @@ export const Page = styled.div<DivProps>`
       background-position: 0% 50%
     }
   }
-  background: linear-gradient(-45deg, rgba(51,215,228,1) 17%, rgba(107,57,205,1) 41%, rgba(13,177,204,1) 65%, rgba(166,49,204,1) 85%);
-  animation: Gradient 15s ease infinite;
-  background-size: 300% 300%;
+  background: linear-gradient(-45deg, rgba(13,177,204,1) 9%, rgba(107,57,205,1) 34%, rgba(33,151,204,1) 60%, rgba(107,57,205,1) 87%);
+  animation: Gradient 10s ease infinite;
+  background-size: 200% 200%;
   box-sizing: border-box;
   height: 100vh;
   width: 100vw;

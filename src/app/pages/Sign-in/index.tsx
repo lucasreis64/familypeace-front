@@ -38,70 +38,41 @@ export const SignIn = () => {
         <img src={lotusFlower} alt=""/>
         <h1>FamilyPeace</h1>
       </Logo>
-      {!signInLoading ? (
-        <>
-          <form action="" onSubmit={submit}>
-            <Input
-              name="email"
-              type="email"
-              placeholder="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <Input
-              name="password"
-              type="password"
-              placeholder="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <Button loading= { signInLoading.toString() } >Sign-in</Button>
-            <Label>
-              Keep Me Logged In!
-              <Check
-                src={stayLoggedIn ? checkMarked : checkEmpty}
-                onClick={() => setStayLoggedIn(!stayLoggedIn)}
-              />
-            </Label>
-          </form>
-          <Link onClick={() => timeMs = 400} to="/sign-up">
-            <P>New user? Sign-up!</P>
-          </Link>
-        </>
-      ) : (
-        <>
-          <form action="" onSubmit={submit}>
-            <Input
-              name="email"
-              type="email"
-              placeholder="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              disabled
-            />
-            <Input
-              name="password"
-              type="password"
-              placeholder="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              disabled
-            />
-            <Button loading={signInLoading.toString()} disabled><Loading /></Button>
-            <Label>
-              Keep Me Logged In!
-              <Check
-                src={stayLoggedIn ? checkMarked : checkEmpty}
-              />
-            </Label>
-          </form>
-          <Link to="/sign-up">
-            <P>New user? Sign-up!</P>
-          </Link>
-        </>
-      )}
+      <form action="" onSubmit={submit}>
+        <Input
+          name="email"
+          type="email"
+          placeholder="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          disabled = {signInLoading}
+        />
+        <Input
+          name="password"
+          type="password"
+          placeholder="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          disabled = {signInLoading}
+        />
+        <Button loading= { signInLoading.toString() } disabled = {signInLoading}>{signInLoading? <Loading /> : 'Sign-in'}</Button>
+        <Label>
+          Keep Me Logged In!
+          <Check
+            src={stayLoggedIn ? checkMarked : checkEmpty}
+            onClick={signInLoading? () => 10 : () => setStayLoggedIn(!stayLoggedIn)}
+          />
+        </Label>
+      </form>
+      {signInLoading?
+        <P>New user? Sign-up!</P>
+        :
+        <Link onClick={() => timeMs = 400} to="/sign-up">
+          <P>New user? Sign-up!</P>
+        </Link>
+      }
     </AuthLayout>
   );
 };

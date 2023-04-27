@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { deslizarCima, VanishBeforeAnimation, ZoomInLeftAnimation } from '../../animations/animations';
+import { deslizarCima, tremerZoom, VanishBeforeAnimation, ZoomInLeftAnimation } from '../../animations/animations';
 import { ThreeDots } from 'react-loader-spinner';
 import Container from '../Container';
 import { time, timeBefore } from '../../../pages/Sign-in';
@@ -14,10 +14,9 @@ export const StyledContainer = styled(Container)`
   animation: ${deslizarCima} ${time};
   background: rgba(75, 120, 155, 0.3);
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 10px 20px 30px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4.6px);
   -webkit-backdrop-filter: blur(4.6px);
-  border: 1px solid rgba(255, 255, 255, 0.75);
   form{
     display: flex;
     flex-direction: column;
@@ -41,14 +40,15 @@ export const Logo = styled.div<DivProps>`
     font-weight: 400;
     font-size: 32px;
     color: #ffffff;
-    filter: drop-shadow(3px 3px 0px #000);
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.9));
+    opacity: 0.7px;
   }
   img{
     height: 50px;
     margin-bottom: -25px;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.6));
   }
-  animation: ${(props) => (props.loading === 'true' ? 'none' : VanishBeforeAnimation)} ${time}, ${ZoomInLeftAnimation} ${'500ms'} 1 ${timeBefore};
-  opacity: 0.7;
+  animation: ${(props) => (props.loading === 'true' ? tremerZoom : 'none')} ${time}, ${ZoomInLeftAnimation} ${'1000ms'} 1 ${'none'};
   margin-bottom: 30px;
   &:hover{
     opacity: 1;
@@ -61,12 +61,12 @@ export const Input = styled.input`
   box-sizing: border-box;
   animation: ${deslizarCima} ${time};
   outline: none;
-  background: rgba(75, 120, 155, 0);
+  background: rgba(75, 120, 155, 0.3);
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 7px 3px 15px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(4.6px);
   -webkit-backdrop-filter: blur(4.6px);
-  border: 1px solid #cadbe9;
+  border: 0px solid #cadbe9;
   color: rgba(252, 253, 253, 0.7);
   &::placeholder {
         font-weight: 400;
@@ -90,16 +90,16 @@ export const Button = styled.button<ButtonProps>`
   width: 100%;
   height: 45px;
   color: white;
-  background: rgba(75, 120, 155, 0);
+  background: rgba(75, 120, 155, 0.0);
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 7px 3px 15px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(4.6px);
   -webkit-backdrop-filter: blur(4.6px);
-  border: 1px solid #cadbe9;
+  border: 1px solid rgba(252, 252, 252, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: ${(props) => (props.loading === 'true' ? 'none' :deslizarCima)} ${time};
+  animation: ${(props) => (props.loading === 'true' ? 'none' : deslizarCima)} ${time};
   margin-top: 10px;
   &:hover{
     background: rgba(75, 120, 155, 0.2);
@@ -109,7 +109,7 @@ export const Button = styled.button<ButtonProps>`
 export const Check = styled.img`
   height: 18px;
   width: 18px;
-  opacity: 0.5;
+  opacity: 1;
   &:hover{
     opacity: 1;
   }
@@ -125,6 +125,7 @@ export const Label = styled.label`
   animation: ${deslizarCima} ${time};
   gap: 10px;
   opacity: 0.5;
+  filter: drop-shadow(5px 5px 3px rgba(0, 0, 0, 0.9));
 `;
 
 export const P = styled.p`
@@ -137,6 +138,7 @@ export const P = styled.p`
   color: #ffffff;
   opacity: 0.5;
   animation: ${deslizarCima} ${time};
+  filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 1));
   &:hover{
     opacity: 1;
   }
