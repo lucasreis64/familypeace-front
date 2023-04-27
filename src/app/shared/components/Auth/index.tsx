@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { deslizarCima, tremerZoom, VanishBeforeAnimation, ZoomInLeftAnimation } from '../../animations/animations';
+import { deslizarCima, tremerZoom, ZoomInLeftAnimation } from '../../animations/animations';
 import { ThreeDots } from 'react-loader-spinner';
 import Container from '../Container';
 import { time } from '../../../pages/Sign-in';
@@ -15,6 +15,8 @@ export const StyledContainer = styled(Container)`
   background: rgba(75, 120, 155, 0.3);
   border-radius: 16px;
   box-shadow: 10px 20px 30px rgba(0, 0, 0, 0.5);
+  width: 400px;
+  height: 520px;
   form{
     display: flex;
     flex-direction: column;
@@ -24,6 +26,11 @@ export const StyledContainer = styled(Container)`
   }
   &:hover{
     background: rgba(75, 120, 155, 0.4);
+  }
+  @media (max-width: 600px) {
+    height: 100vh !important;
+    width: 90vw !important;
+    padding: 15px;
   }
 `;
 
@@ -105,8 +112,8 @@ export const Button = styled.button<ButtonProps>`
 `;
 
 export const Check = styled.img`
-  height: 18px;
-  width: 18px;
+  height: 16px;
+  width: 16px;
   opacity: 1;
   &:hover{
     opacity: 1;
@@ -124,6 +131,9 @@ export const Label = styled.label`
   gap: 10px;
   opacity: 0.5;
   filter: drop-shadow(5px 5px 3px rgba(0, 0, 0, 0.9));
+  @media (max-width: 600px) {
+    font-size: 16px;
+  }
 `;
 
 export const P = styled.p`
@@ -139,6 +149,9 @@ export const P = styled.p`
   filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 1));
   &:hover{
     opacity: 1;
+  }
+  @media (max-width: 600px) {
+    font-size: 17px;
   }
 `;
 

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 interface DivProps {
-  height: string;
-  width: string;
+  height?: string;
+  width?: string;
 }
 
 export default styled.div<DivProps>`
@@ -18,13 +18,4 @@ export default styled.div<DivProps>`
 
   display: flex;
   overflow: hidden;
-
-  @media (max-width: 600px) {
-    border-radius: 0;
-    min-height: 100vh;
-    height: auto;
-    max-height: initial;
-    min-width: 100%;
-    max-width: initial;
-  }
 `;

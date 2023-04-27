@@ -9,7 +9,7 @@ interface AuthProps {
 export const AuthLayout: React.FC<AuthProps> = ({ children }) => {
   return (
     <Page>
-      <StyledContainer width="400px" height="520px">
+      <StyledContainer>
         {children}
       </StyledContainer>
     </Page>
