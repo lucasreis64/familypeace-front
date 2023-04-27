@@ -130,7 +130,7 @@ export const Label = styled.label`
   animation: ${deslizarCima} ${time};
   gap: 10px;
   opacity: 0.5;
-  filter: drop-shadow(5px 5px 3px rgba(0, 0, 0, 0.9));
+  filter: drop-shadow(5px 5px 7px rgba(0, 0, 0, 0.9));
   @media (max-width: 600px) {
     font-size: 16px;
   }
