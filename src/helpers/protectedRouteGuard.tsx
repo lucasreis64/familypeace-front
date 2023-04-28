@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
 import { UserContext } from '../app/shared/contexts';
 import useToken from '../app/shared/hooks/useToken';
-
 interface ProtectedRouteProps {
   children: React.ReactNode,
   route: 'auth' | 'dashboard'
@@ -10,7 +9,7 @@ interface ProtectedRouteProps {
 
 export const ProtectedRouteGuard: React.FC<ProtectedRouteProps> = ({ children, route }) => {
   const token = useToken();
-  const contextToken = useContext(UserContext).userData.token;
+  const contextToken = useContext(UserContext).contextUserData.token;
 
   if (!token && !contextToken && route === 'dashboard') {
     return <Navigate to="/sign-in" />;

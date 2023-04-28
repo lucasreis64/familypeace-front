@@ -6,7 +6,7 @@ import { userDataParams } from '../../../protocols';
 interface UserContextData {
   userData: userDataParams;
   setUserData: React.Dispatch<React.SetStateAction<userDataParams>>;
-  contextUserData: userDataParams | {};
+  contextUserData: userDataParams;
   setContextUserData: React.Dispatch<React.SetStateAction<userDataParams>>;
 }
 
@@ -18,7 +18,7 @@ interface UserProps {
 
 export const UserProvider: React.FC<UserProps> = ({ children }) => {
   const [userData, setUserData] = useLocalStorage('userData', {});
-  const [contextUserData, setContextUserData] = useState({});
+  const [contextUserData, setContextUserData] = useState(userData);
   
   return (
     <UserContext.Provider
