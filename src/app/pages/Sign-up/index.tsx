@@ -5,7 +5,6 @@ import useSignUp from '../../shared/hooks/api/useSignUp';
 import lotusFlower from '../../assets/images/lotusflower-spaced.png';
 import { Button, Input, Loading, Logo, P } from '../../shared/components/Auth';
 import { AuthLayout } from '../../shared/layouts/Auth';
-import { Link } from 'react-router-dom';
 
 export default function SignUp() {
   const [email, setEmail] = useState('');
@@ -23,7 +22,7 @@ export default function SignUp() {
       toast('As senhas devem ser iguais!');
     } else {
       try {
-        await signUp(email, password);
+        await signUp(email, password, name);
         toast('Inscrito com sucesso! Por favor, faça login.');
         navigate('/sign-in');
       } catch (error) {
@@ -36,8 +35,8 @@ export default function SignUp() {
     setDropAnimation(true);
     setTimeout(() => {
       setDropAnimation(false);
-      navigate('sign-in');
-    }, 1000);
+      navigate('/sign-in');
+    }, 990);
   }
 
   return (
@@ -83,13 +82,9 @@ export default function SignUp() {
           required
           disabled = {signUpLoading}
         />
-        <Button loading= { signUpLoading.toString() } disabled = {signUpLoading}>{signUpLoading? <Loading /> : 'Sign-up'}</Button>
+        <Button disabled = {signUpLoading}>{signUpLoading? <Loading/> : 'Sign-up'}</Button>
       </form>
-      {signUpLoading?
-        <P>Already signed-up? Sign-in!</P>
-        :
-        <P onClick={goToSignIn}>Already signed-up? Sign-in!</P>
-      }
+      <P onClick={signUpLoading ? () => 10 : goToSignIn}>Already signed-up? Sign-in!</P>
     </AuthLayout>
   );
 }

@@ -1,5 +1,4 @@
 import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Button, Check, Input, Label, Loading, Logo, P } from '../../shared/components/Auth';
@@ -40,8 +39,8 @@ export const SignIn = () => {
     setDropAnimation(true);
     setTimeout(() => {
       setDropAnimation(false);
-      navigate('sign-up');
-    }, 1000);
+      navigate('/sign-up');
+    }, 990);
   }
 
   return (
@@ -69,7 +68,7 @@ export const SignIn = () => {
           required
           disabled = {signInLoading}
         />
-        <Button loading= { signInLoading.toString() } disabled = {signInLoading}>{signInLoading? <Loading /> : 'Sign-in'}</Button>
+        <Button disabled = {signInLoading}>{signInLoading? <Loading /> : 'Sign-in'}</Button>
         <Label>
           Keep Me Logged In!
           <Check
@@ -78,11 +77,7 @@ export const SignIn = () => {
           />
         </Label>
       </form>
-      {signInLoading?
-        <P>New user? Sign-up!</P>
-        :
-        <P onClick={goToSignUp}>New user? Sign-up!</P>
-      }
+      <P onClick={signInLoading ? () => 10 : goToSignUp}>New user? Sign-up!</P>
     </AuthLayout>
   );
 };

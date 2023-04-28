@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { deslizarCima, HiddenFall, tremerZoom, ZoomInDownAnimation, ZoomInLeftAnimation, ZoomOutDownAnimation } from '../../animations/animations';
+import { tremerZoom, ZoomInDownAnimation, ZoomInLeftAnimation, ZoomOutDownAnimation } from '../../animations/animations';
 import { ThreeDots } from 'react-loader-spinner';
 import Container from '../Container';
 import { time } from '../../../pages/Sign-in';
@@ -53,7 +53,7 @@ export const Logo = styled.div<DivProps>`
     margin-bottom: -25px;
     filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.6));
   }
-  animation: ${(props) => (props.loading === 'true' ? tremerZoom : HiddenFall)} ${time}, ${ZoomInLeftAnimation} ${'1000ms'} 1 ${'400ms'};
+  animation: ${(props) => (props.loading === 'true' ? tremerZoom : 'none')} ${time}, ${ZoomInLeftAnimation} ${'1000ms'} 1 ${'200ms'};
   margin-bottom: 30px;
   &:hover{
     opacity: 1;
@@ -64,7 +64,6 @@ export const Input = styled.input`
   padding-left: 8px;
   height: 45px;
   box-sizing: border-box;
-  animation: ${deslizarCima} ${time};
   outline: none;
   background: rgba(75, 120, 155, 0.3);
   border-radius: 16px;
@@ -88,9 +87,7 @@ export const Input = styled.input`
   }
 `;
 
-type ButtonProps = DivProps;
-
-export const Button = styled.button<ButtonProps>`
+export const Button = styled.button`
   font-family: "Lexend Deca";
   width: 100%;
   height: 45px;
@@ -98,13 +95,12 @@ export const Button = styled.button<ButtonProps>`
   background: rgba(75, 120, 155, 0.0);
   border-radius: 16px;
   box-shadow: 7px 3px 15px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(4.6px);
+  backdrop-filter: blur(4.6px);
   -webkit-backdrop-filter: blur(4.6px);
   border: 1px solid rgba(252, 252, 252, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: ${(props) => (props.loading === 'true' ? 'none' : deslizarCima)} ${time};
   margin-top: 10px;
   &:hover{
     background: rgba(75, 120, 155, 0.4);
@@ -127,7 +123,6 @@ export const Label = styled.label`
   justify-content: center;
   font-size: 18px;
   color: white;
-  animation: ${deslizarCima} ${time};
   gap: 10px;
   opacity: 0.5;
   filter: drop-shadow(5px 5px 7px rgba(0, 0, 0, 0.9));
@@ -145,10 +140,10 @@ export const P = styled.p`
   text-decoration: underline;
   color: #ffffff;
   opacity: 0.5;
-  animation: ${deslizarCima} ${time};
   filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 1));
   &:hover{
     opacity: 1;
+    cursor: pointer;
   }
   @media (max-width: 600px) {
     font-size: 17px;
