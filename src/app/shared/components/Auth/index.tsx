@@ -15,8 +15,6 @@ export const StyledContainer = styled(Container)`
   background: rgba(75, 120, 155, 0.3);
   border-radius: 16px;
   box-shadow: 10px 20px 30px rgba(0, 0, 0, 0.5);
-  width: 400px;
-  height: 520px;
   form{
     display: flex;
     flex-direction: column;

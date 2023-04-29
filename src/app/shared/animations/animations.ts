@@ -1,16 +1,16 @@
 import { keyframes } from 'styled-components';
 
-export const deslizarEsquerda = keyframes`
+export const LeftSlide = keyframes`
     from{opacity:0; transform: translateX(-600px)}
     to{opacity:1; transform: translateX(-0px)}
     `;
 
-export const opacidade=keyframes`
+export const Opacity=keyframes`
     0%{opacity:0}
     100%{opacity:1}
     `;
 
-export const variarQuatroVezes= keyframes`
+export const VariateFourTimes= keyframes`
     0% {
         transform: translateY(-20%);
         opacity: 0.2;
@@ -32,7 +32,7 @@ export const variarQuatroVezes= keyframes`
         opacity: 1;
     };`;
 
-export const variarSeisVezes= keyframes`
+export const VariateSixTimes= keyframes`
     0% {
         transform: translateY(-100%);
         opacity: 0.2;
@@ -62,17 +62,17 @@ export const variarSeisVezes= keyframes`
         opacity: 1;
     }`;
 
-export const trovao= keyframes`
+export const Thunder= keyframes`
         from{filter: brightness(0.7);}
         to{filter: brightness(1);}
     `;
 
-export const deslizarCima= keyframes`
+export const TopSlide= keyframes`
         from{opacity:0;transform: translateY(-600px)}
         to{opacity:1;transform: translateY(0px)}
     `;
 
-export const hangThenDrop = keyframes`
+export const HangThenDrop = keyframes`
         0% {
             transform-origin: top left;
             animation-timing-function: ease-in-out;
@@ -112,13 +112,13 @@ export const tremerZoom= keyframes`
         }
     `;
 
-export const loading= keyframes`
+export const Loading= keyframes`
         100%{
         transform:translateX(100%);
     }
     `;
 
-export const quicarFora = keyframes`
+export const BounceOut = keyframes`
         20% {
             transform: scale3d(.9, .9, .9);
         }
@@ -132,7 +132,7 @@ export const quicarFora = keyframes`
         }
     `;
 
-export const quicarDentro = keyframes`
+export const BounceIn = keyframes`
         from, 20%, 40%, 60%, 80%, to {
             animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
         }
@@ -201,5 +201,17 @@ export const ZoomInDownAnimation = keyframes`
         opacity: 1;
         transform: scale3d(.475, .475, .475) translate3d(0, 60px, 0);
         animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+    }
+`;
+
+export const MoovingBackground = keyframes`
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100%{
+        background-position: 0% 50%
     }
 `;

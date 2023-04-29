@@ -10,7 +10,7 @@ interface AuthProps {
 export const AuthLayout: React.FC<AuthProps> = ({ children, dropAnimation }) => {
   return (
     <Page>
-      <StyledContainer dropAnimation = {dropAnimation}>
+      <StyledContainer width="400px" height="520px" dropAnimation = {dropAnimation}>
         {children}
       </StyledContainer>
     </Page>
