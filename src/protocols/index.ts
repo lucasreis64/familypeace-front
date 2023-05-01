@@ -11,7 +11,7 @@ export type userDataParams =
 
 export type UpdateEnrollmentParams = {
   name: string;
-  birthday: string | Date;
+  birthday: string;
   phone: string;
   profilePicture: string;
 } & {

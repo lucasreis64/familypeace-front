@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { InputEvent, UseFormParams } from '../../../protocols';
 
 export const useForm = (options: UseFormParams) => {
   const [data, setData] = useState(options?.initialValues || {});
   const [errors, setErrors] = useState({});
 
-  const handleChange = (key: string, sanitizeFn: (param: string) => string) => (e: InputEvent) => {
+  const handleChange = (key: string, sanitizeFn?: (param: string) => string) => (e: ChangeEvent<HTMLInputElement>) => {
     const value = sanitizeFn ? sanitizeFn(e.target.value) : e.target.value;
 
     setData({

@@ -16,7 +16,7 @@ export const StyledContainer = styled(Container)`
   padding: 30px;
   box-sizing: border-box;
   animation: ${ props =>  props.dropAnimation ? ZoomOutDownAnimation : ZoomInDownAnimation } ${ props =>  props.dropAnimation ? '1000ms' : '1000ms' };
-  background: rgba(12, 12, 12, 0.5);
+  background: rgba(0, 0, 0, 0.5);
   border-radius: 16px;
   box-shadow: 10px 20px 30px rgba(0, 0, 0, 0.5);
   form{
@@ -84,7 +84,9 @@ export const Input = styled.input`
   height: 45px;
   box-sizing: border-box;
   outline: none;
-  background: rgba(75, 120, 155, 0.3);
+  animation: ${MoovingBackground} 5s ease infinite;
+  background-size: 300% 100%;
+  background-image: ${LightGradientFour};
   border-radius: 16px;
   box-shadow: 7px 3px 15px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(4.6px);
@@ -93,13 +95,12 @@ export const Input = styled.input`
   color: rgba(252, 253, 253, 0.7);
   &::placeholder {
         font-family: 'Roboto';
-        font-weight: 200;
+        font-weight: 300;
         font-size: 20px;
-        opacity: 0.5;
-        color: white;
+        opacity: 0.7;
+        color: #07020f;
   }
   &:hover{
-    background: rgba(75, 120, 155, 0.2);
     &::placeholder {
         opacity: 1;
   }
@@ -111,7 +112,9 @@ export const Button = styled.button`
   font-weight: 700;
   width: 100%;
   height: 45px;
-  background: rgba(0, 0, 0, 0.2);
+  animation: ${MoovingBackground} 5s ease infinite;
+  background-size: 300% 100%;
+  background-image: ${GradientFour};
   border-radius: 16px;
   box-shadow: 7px 3px 15px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(4.6px);
@@ -123,7 +126,7 @@ export const Button = styled.button`
   margin-top: 10px;
   &:hover{
     h1{
-      background-image: ${GradientFour};
+      background-image: ${LightGradientFour};
     }
   }
   @media (max-width: 600px) {
@@ -132,8 +135,8 @@ export const Button = styled.button`
 `;
 
 export const CheckMarked = styled.div`
-  height: 16px;
-  width: 16px;
+  height: 18px;
+  width: 18px;
   opacity: 1;
   animation: ${MoovingBackground} 5s ease infinite;
   background-size: 300% 100%;
@@ -150,8 +153,8 @@ export const CheckMarked = styled.div`
 `;
 
 export const CheckEmpty = styled.div`
-  height: 16px;
-  width: 16px;
+  height: 18px;
+  width: 18px;
   opacity: 1;
   animation: ${MoovingBackground} 5s ease infinite;
   background-size: 300% 100%;
@@ -176,7 +179,7 @@ export const Label = styled.label`
   gap: 10px;
   p{
     height: 19px;
-    font-weight: 200;
+    font-weight: 300;
   }
   &:hover{
     p, div{
