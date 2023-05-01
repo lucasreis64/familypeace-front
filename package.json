@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "start": "dist/assets/index-b147dd36.js",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"

@@ -33,18 +33,8 @@ const Container = styled.div<ContainerProps>`
   }
   
   h1{
-    animation: ${MoovingBackground} 5s ease infinite;
-    background-size: 300% 100%;
-    font-family: 'Roboto';
-    color: transparent;
-    background-image: ${LightGradientFour};
-    background-clip: text;
-    -webkit-background-clip: text;    
     font-weight: 700;
     font-size: 30px;
-    &:hover{
-      background-image: ${GradientFour};
-    }
   }
   button{
     border: none;

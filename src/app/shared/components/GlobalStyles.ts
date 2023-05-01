@@ -1,4 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
+import { MoovingBackground } from '../animations/animations';
+import { GradientFour, LightGradientFour } from '../constants';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -50,6 +52,26 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+h1, h2{
+		animation: ${MoovingBackground} 5s ease infinite;
+    background-size: 300% 100%;
+    font-family: 'Roboto';
+    color: transparent;
+    background-image: ${LightGradientFour};
+    background-clip: text;
+    -webkit-background-clip: text;    
+    &:hover{
+      background-image: ${GradientFour};
+    }
+}
+.gradientDiv{
+    animation: ${MoovingBackground} 5s ease infinite;
+    background-size: 300% 100%;
+    background-image: ${LightGradientFour};
+		&:hover{
+      background-image: ${GradientFour};
+    }
 }
 `;
 
