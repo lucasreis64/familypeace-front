@@ -11,7 +11,7 @@ import { GradientFour } from '../../constants';
 export function PersonalInfo() {
   const { enrollment, enrollmentLoading } = useEnrollment();
   const { updateEnrollmentLoading, updateEnrollment } = useUpdateEnrollment();
-  const { userData, setUserData } = useContext(UserContext);
+  const { contextUserData, userData, setUserData } = useContext(UserContext);
 
   const {
     handleSubmit,
@@ -55,24 +55,27 @@ export function PersonalInfo() {
         phone: enrollment.phone,
         profilePicture: enrollment.profilePicture,
       });
-      setUserData({
-        token: userData.token,
-        user: {
-          name: enrollment.name,
-          id: userData.user.id,
-          email: userData.user.email,
-          profilePicture: enrollment.profilePicture,
-        }
-      });
+      if (Object.keys(userData).length > 0) {
+        console.log('oi');
+        setUserData({
+          token: userData.token,
+          user: {
+            name: enrollment.name,
+            id: userData.user.id,
+            email: userData.user.email,
+            profilePicture: enrollment.profilePicture,
+          }
+        });
+      }
     }
   }, [enrollment]);
 
   return (
     <Container>
       <LeftContainer>
-        <RoundFrame className = 'gradientDiv'><img src={enrollment?.profilePicture || userData.user.profilePicture} alt="profilePicture" /></RoundFrame>
-        <h1>{enrollment?.name || userData.user.name}</h1>
-        <h2>{userData.user.email}</h2>
+        <RoundFrame className = 'gradientDiv'><img src={enrollment?.profilePicture || (contextUserData?.user.profilePicture)} alt="profilePicture" /></RoundFrame>
+        <h1>{enrollment?.name || contextUserData?.user.name}</h1>
+        <h2>{contextUserData?.user.email}</h2>
       </LeftContainer>
       <Line className = 'gradientDiv'/>
       <RightContainer>

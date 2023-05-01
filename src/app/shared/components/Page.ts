@@ -7,7 +7,7 @@ interface DivProps {
 }
 
 export const Page = styled.div<DivProps>`
-  background: linear-gradient(-45deg, rgba(13,177,204,1) 9%, rgba(107,57,205,1) 34%, rgba(33,151,204,1) 60%, rgba(107,57,205,1) 87%);
+background: linear-gradient(-45deg, rgba(51,65,166,1) 0%, rgba(159,61,61,1) 23%, rgba(51,65,166,1) 51%, rgba(159,61,61,1) 80%, rgba(51,65,166,1) 100%);
   animation: ${MoovingBackground} 10s ease infinite;
   background-size: 200% 100%;
   box-sizing: border-box;

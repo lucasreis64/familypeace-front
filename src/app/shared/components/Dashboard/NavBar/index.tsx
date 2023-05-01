@@ -92,7 +92,7 @@ const ButtonsContainer = styled.div`
   
 `;
 
-const Logo = styled.div`
+export const Logo = styled.div`
   background-color: transparent;
   cursor: pointer;
   display: flex;

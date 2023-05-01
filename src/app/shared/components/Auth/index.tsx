@@ -1,8 +1,12 @@
 import styled from 'styled-components';
-import { tremerZoom, ZoomInDownAnimation, ZoomInLeftAnimation, ZoomOutDownAnimation } from '../../animations/animations';
+import { MoovingBackground, tremerZoom, ZoomInDownAnimation, ZoomInLeftAnimation, ZoomOutDownAnimation } from '../../animations/animations';
 import { ThreeDots } from 'react-loader-spinner';
 import Container from '../Container';
 import { time } from '../../../pages/Sign-in';
+import { GradientFour, LightGradientFour } from '../../constants';
+import familypeace from '../../../assets/images/lotusflower-spaced.png';
+import checkMarked from '../../../assets/images/check-marked.png';
+import checkEmpty from '../../../assets/images/check-empty.png';
 
 export const StyledContainer = styled(Container)`
   display: flex;
@@ -12,7 +16,7 @@ export const StyledContainer = styled(Container)`
   padding: 30px;
   box-sizing: border-box;
   animation: ${ props =>  props.dropAnimation ? ZoomOutDownAnimation : ZoomInDownAnimation } ${ props =>  props.dropAnimation ? '1000ms' : '1000ms' };
-  background: rgba(75, 120, 155, 0.3);
+  background: rgba(12, 12, 12, 0.5);
   border-radius: 16px;
   box-shadow: 10px 20px 30px rgba(0, 0, 0, 0.5);
   form{
@@ -21,9 +25,6 @@ export const StyledContainer = styled(Container)`
     gap: 6px;
     width: 100%;
     gap: 10px;
-  }
-  &:hover{
-    background: rgba(75, 120, 155, 0.4);
   }
   @media (max-width: 600px) {
     height: 100vh !important;
@@ -36,26 +37,46 @@ interface DivProps {
   loading: string;
 };
 
-export const Logo = styled.div<DivProps>`
+export const LogoComplete = styled.div<DivProps>`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   h1{
     font-family: "Saira Stencil One";
     margin-bottom: 25px;
     font-weight: 400;
     font-size: 32px;
-    color: #ffffff;
     filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.9));
     opacity: 0.7px;
-  }
-  img{
-    height: 50px;
-    margin-bottom: -25px;
-    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.6));
+    height: 33px;
+    &:hover{
+      cursor: default;
+    }
   }
   animation: ${(props) => (props.loading === 'true' ? tremerZoom : 'none')} ${time}, ${ZoomInLeftAnimation} ${'1000ms'} 1 ${'200ms'};
   margin-bottom: 30px;
   &:hover{
     opacity: 1;
+    .lotus, h1{
+      background-image: ${GradientFour};
+    }
   }
+`;
+
+export const LotusFlower = styled.div`
+  height: 30px;
+  width: 90px;
+  margin-bottom: -14px;
+  filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.6));
+  animation: ${MoovingBackground} 5s ease infinite;
+  background-size: 300% 100%;
+  background-image: ${LightGradientFour};
+  -webkit-mask-image: url(${familypeace});
+  mask-image: url(${familypeace});
+  mask-repeat: no-repeat;
+  mask-position: center center;
+  mask-size: cover;
+
 `;
 
 export const Input = styled.input`
@@ -71,11 +92,11 @@ export const Input = styled.input`
   border: 0px solid #cadbe9;
   color: rgba(252, 253, 253, 0.7);
   &::placeholder {
-        font-weight: 400;
+        font-family: 'Roboto';
+        font-weight: 200;
         font-size: 20px;
-        color: #dbdbdb;
-        font-family: "Lexend Deca";
         opacity: 0.5;
+        color: white;
   }
   &:hover{
     background: rgba(75, 120, 155, 0.2);
@@ -86,31 +107,63 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-  font-family: "Lexend Deca";
+  font-family: "Roboto";
+  font-weight: 700;
   width: 100%;
   height: 45px;
-  color: white;
-  background: rgba(75, 120, 155, 0.0);
+  background: rgba(0, 0, 0, 0.2);
   border-radius: 16px;
   box-shadow: 7px 3px 15px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(4.6px);
   -webkit-backdrop-filter: blur(4.6px);
-  border: 1px solid rgba(252, 252, 252, 0.2);
+  border: 0px solid rgba(252, 252, 252, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 10px;
   &:hover{
-    background: rgba(75, 120, 155, 0.4);
+    h1{
+      background-image: ${GradientFour};
+    }
+  }
+  @media (max-width: 600px) {
+    font-size: 20px;
   }
 `;
 
-export const Check = styled.img`
+export const CheckMarked = styled.div`
   height: 16px;
   width: 16px;
   opacity: 1;
+  animation: ${MoovingBackground} 5s ease infinite;
+  background-size: 300% 100%;
+  background-image: ${LightGradientFour};
+  mask-repeat: no-repeat;
+  mask-position: center center;
+  mask-size: cover;
+  -webkit-mask-image: url(${checkMarked});
+  mask-image: url(${checkMarked});
   &:hover{
-    opacity: 1;
+      background-image: ${GradientFour};
+      cursor: pointer;
+  }
+`;
+
+export const CheckEmpty = styled.div`
+  height: 16px;
+  width: 16px;
+  opacity: 1;
+  animation: ${MoovingBackground} 5s ease infinite;
+  background-size: 300% 100%;
+  background-image: ${LightGradientFour};
+  mask-repeat: no-repeat;
+  mask-position: center center;
+  mask-size: cover;
+  -webkit-mask-image: url(${checkEmpty});
+  mask-image: url(${checkEmpty});
+  &:hover{
+      background-image: ${GradientFour};
+      cursor: pointer;
   }
 `;
 
@@ -120,9 +173,16 @@ export const Label = styled.label`
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  color: white;
   gap: 10px;
-  opacity: 0.5;
+  p{
+    height: 19px;
+    font-weight: 200;
+  }
+  &:hover{
+    p, div{
+      background-image: ${GradientFour};
+    }
+  }
   filter: drop-shadow(5px 5px 7px rgba(0, 0, 0, 0.9));
   @media (max-width: 600px) {
     font-size: 16px;
@@ -131,13 +191,11 @@ export const Label = styled.label`
 
 export const P = styled.p`
   margin-top: 20px;
-  font-family: "Saira Stencil One";
+  font-family: "Roboto";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
+  height: 21px;
   font-size: 20px;
-  text-decoration: underline;
-  color: #ffffff;
-  opacity: 0.5;
   filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 1));
   &:hover{
     opacity: 1;

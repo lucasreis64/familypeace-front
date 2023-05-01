@@ -37,6 +37,7 @@ button:hover,img:hover{
 }
 body {
 	line-height: 1;
+	font-family: 'Roboto';
 }
 ol, ul {
 	list-style: none;
@@ -53,7 +54,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-h1, h2{
+h1, h2, .gradientText, p{
 		animation: ${MoovingBackground} 5s ease infinite;
     background-size: 300% 100%;
     font-family: 'Roboto';

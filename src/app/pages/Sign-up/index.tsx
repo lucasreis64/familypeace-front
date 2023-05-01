@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import useSignUp from '../../shared/hooks/api/useSignUp';
 import lotusFlower from '../../assets/images/lotusflower-spaced.png';
-import { Button, Input, Loading, Logo, P } from '../../shared/components/Auth';
+import { Button, Input, Loading, LogoComplete, LotusFlower, P } from '../../shared/components/Auth';
 import { AuthLayout } from '../../shared/layouts/Auth';
 
 export default function SignUp() {
@@ -41,10 +41,10 @@ export default function SignUp() {
 
   return (
     <AuthLayout dropAnimation = {dropAnimation}>
-      <Logo className = 'logo' loading = { signUpLoading.toString() }>
-        <img src={lotusFlower} alt=""/>
+      <LogoComplete className = 'logo' loading = { signUpLoading.toString() }>
+        <LotusFlower className='lotus'/>
         <h1>FamilyPeace</h1>
-      </Logo>
+      </LogoComplete>
       <form action="" onSubmit={submit}>
         <Input
           name="name"
@@ -82,7 +82,7 @@ export default function SignUp() {
           required
           disabled = {signUpLoading}
         />
-        <Button disabled = {signUpLoading}>{signUpLoading? <Loading/> : 'Sign-up'}</Button>
+        <Button disabled = {signUpLoading}>{signUpLoading? <Loading/> : <h1>Sign-up</h1>}</Button>
       </form>
       <P onClick={signUpLoading ? () => 10 : goToSignIn}>Already signed-up? Sign-in!</P>
     </AuthLayout>

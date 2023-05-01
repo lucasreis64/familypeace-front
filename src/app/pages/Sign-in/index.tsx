@@ -1,13 +1,10 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { Button, Check, Input, Label, Loading, Logo, P } from '../../shared/components/Auth';
+import { Button, CheckEmpty, CheckMarked, Input, Label, Loading, LogoComplete, LotusFlower, P } from '../../shared/components/Auth';
 import { UserContext } from '../../shared/contexts';
 import { useSignIn } from '../../shared/hooks/api/useSignIn';
 import { AuthLayout } from '../../shared/layouts/Auth';
-import checkEmpty from '../../assets/images/check-empty.png';
-import checkMarked from '../../assets/images/check-marked.png';
-import lotusFlower from '../../assets/images/lotusflower-spaced.png';
 export let timeMs: number;
 
 export const SignIn = () => {
@@ -45,10 +42,10 @@ export const SignIn = () => {
 
   return (
     <AuthLayout dropAnimation = {dropAnimation}>
-      <Logo loading = { signInLoading.toString() }>
-        <img src={lotusFlower} alt=""/>
+      <LogoComplete loading = { signInLoading.toString() }>
+        <LotusFlower className='lotus'/>
         <h1>FamilyPeace</h1>
-      </Logo>
+      </LogoComplete>
       <form action="" onSubmit={submit}>
         <Input
           name="email"
@@ -68,13 +65,14 @@ export const SignIn = () => {
           required
           disabled = {signInLoading}
         />
-        <Button disabled = {signInLoading}>{signInLoading? <Loading /> : 'Sign-in'}</Button>
+        <Button disabled = {signInLoading}>{signInLoading? <Loading /> : <h1>Sign-in</h1>}</Button>
         <Label>
-          Keep Me Logged In!
-          <Check
-            src={stayLoggedIn ? checkMarked : checkEmpty}
-            onClick={signInLoading? () => 10 : () => setStayLoggedIn(!stayLoggedIn)}
-          />
+          <p>Keep Me Logged In!</p>
+          { stayLoggedIn ? 
+            <CheckMarked onClick={signInLoading? () => 10 : () => setStayLoggedIn(!stayLoggedIn)}/>
+            : 
+            <CheckEmpty onClick={signInLoading? () => 10 : () => setStayLoggedIn(!stayLoggedIn)}/> 
+          }
         </Label>
       </form>
       <P onClick={signInLoading ? () => 10 : goToSignUp}>New user? Sign-up!</P>
