@@ -13,11 +13,12 @@ import { formatPhone } from '../../../../helpers/phoneFormatter';
 import { exclude } from '../../../../helpers/excludeKey';
 import { isObjectEqual } from '../../../../helpers/objectComparator';
 import { UpdateEnrollmentParams } from '../../../../protocols';
-import { Loading } from '../Auth';
 import { DashboardContext } from '../../contexts/DashboardContext';
+import { ThreeDots } from 'react-loader-spinner';
+import { Loading } from '../Auth';
 
 export function PersonalInfo() {
-  const { enrollment } = useEnrollment();
+  const { enrollment, enrollmentLoading } = useEnrollment();
   const { updateEnrollmentLoading, updateEnrollment } = useUpdateEnrollment();
   const { contextUserData, userData, setUserData } = useContext(UserContext);
   const { setUpdatePage, updatePage } = useContext(DashboardContext);
@@ -96,7 +97,7 @@ export function PersonalInfo() {
       <RightContainer>
         <Title>PERSONAL INFORMATION</Title>
         <FormContainer onSubmit={handleSubmit}>
-          <InputContainer>
+          <InputContainer loading = {enrollmentLoading}>
             <h1>Name</h1>
             <Input
               placeholder="Your name"
@@ -106,9 +107,10 @@ export function PersonalInfo() {
               onChange={ e => { compareChanges(handleChange('name')(e)); } }
               disabled = {updateEnrollmentLoading}
             />
+            {enrollmentLoading ? <LoadingInput/> : ''}
             {errors.name && <Error>{errors.name}</Error>}
           </InputContainer>
-          <InputContainer>
+          <InputContainer  loading = {enrollmentLoading}>
             <h1>Birthdate</h1>
             <Input
               placeholder="Your Birthdate"
@@ -118,9 +120,10 @@ export function PersonalInfo() {
               onChange={ e => {  compareChanges(handleChange('birthday', (d) => d && formatDate(d))(e)); } }
               disabled = {updateEnrollmentLoading}
             />
+            {enrollmentLoading ? <LoadingInput/> : ''}
             {errors.birthday && <Error>{errors.birthday}</Error>}
           </InputContainer>
-          <InputContainer>
+          <InputContainer  loading = {enrollmentLoading}>
             <h1>Phone</h1>
             <Input
               placeholder="Your Phone"
@@ -130,9 +133,10 @@ export function PersonalInfo() {
               onChange={ e => { compareChanges(handleChange('phone', (d) => d && formatPhone(d))(e)); } }
               disabled = {updateEnrollmentLoading}
             />
+            {enrollmentLoading ? <LoadingInput/> : ''}
             {errors.phone && <Error>{errors.phone}</Error>}
           </InputContainer>
-          <InputContainer>
+          <InputContainer  loading = {enrollmentLoading}>
             <h1>Profile Picture</h1>
             <Input
               placeholder="Picture url"
@@ -142,9 +146,10 @@ export function PersonalInfo() {
               onChange={e => { compareChanges(handleChange('profilePicture')(e)); }}
               disabled = {updateEnrollmentLoading}
             />
+            {enrollmentLoading ? <LoadingInput/> : ''}
             {errors.profilePicture && <Error>{errors.profilePicture}</Error>}
           </InputContainer>
-          <InputContainer>
+          <InputContainer  loading = {enrollmentLoading}>
             <div>
               <h1>Family</h1>
               <Input 
@@ -152,6 +157,7 @@ export function PersonalInfo() {
                 disabled
               />
             </div>
+            {enrollmentLoading ? <LoadingInput/> : ''}
           </InputContainer>
           <SubmitContainer>
             {updateEnrollmentLoading ?
@@ -230,6 +236,19 @@ export const Button = styled.button<ButtonProps>`
   }
 `;
 
+export const LoadingInput = () => (
+  <ThreeDots
+    height="50"
+    width="50"
+    radius="9"
+    color="white"
+    ariaLabel="three-dots-loading"
+    wrapperStyle={{}}
+    wrapperClass='loading'
+    visible={true}
+  />
+);
+
 export const Container = styled.div`
   height: 100%;
   box-sizing: border-box;
@@ -249,7 +268,11 @@ export const FormContainer = styled.form`
   align-items: center;
 `;
 
-export const InputContainer = styled.div`
+interface InputContainerProps {
+  loading: boolean;
+}
+
+export const InputContainer = styled.div<InputContainerProps>`
   box-sizing: border-box;
   height: 100px;
   width: 250px;
@@ -270,6 +293,12 @@ export const InputContainer = styled.div`
     &:hover{
       background-image: ${LightGradientFour};
     }
+  }
+  input{
+    ${ ({ loading }) => loading ? 'display: none' : ''}
+  }
+  .loading{
+    margin-top: 20px;
   }
   div{
     input{

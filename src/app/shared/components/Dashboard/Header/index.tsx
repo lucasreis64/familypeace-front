@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import logout from '../../../assets/images/logout.png';
-import { MoovingBackground, Opacity } from '../../animations/animations';
-import { GradientFour, LightGradientFour } from '../../constants';
-import { UserContext } from '../../contexts';
-import { DashboardContext } from '../../contexts/DashboardContext';
+import logout from '../../../../assets/images/logout.png';
+import { MoovingBackground, Opacity } from '../../../animations/animations';
+import { GradientFour, LightGradientFour } from '../../../constants';
+import { UserContext } from '../../../contexts';
+import { DashboardContext } from '../../../contexts/DashboardContext';
 
 export function Header() {
   const { routeName } = useContext(DashboardContext);

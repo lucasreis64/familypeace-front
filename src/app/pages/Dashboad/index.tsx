@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import { Opacity } from '../../shared/animations/animations';
-import { Header } from '../../shared/components/Account/Header';
+import { Header } from '../../shared/components/Dashboard/Header';
 import { NavBar } from '../../shared/components/Dashboard/NavBar';
 import { DashboardContext } from '../../shared/contexts/DashboardContext';
 import { DashboardLayout } from '../../shared/layouts/Dashboard';
