@@ -12,7 +12,7 @@ import { formatDate } from '../../../../helpers/dateFormatter';
 import { formatPhone } from '../../../../helpers/phoneFormatter';
 import { exclude } from '../../../../helpers/excludeKey';
 import { isObjectEqual } from '../../../../helpers/objectComparator';
-import { UpdateEnrollmentParams } from '../../../../protocols';
+import { ErrorsParams, UpdateEnrollmentParams } from '../../../../protocols';
 import { Loading } from '../Auth';
 import { DashboardContext } from '../../contexts/DashboardContext';
 
@@ -39,7 +39,7 @@ export function PersonalInfo() {
         profilePicture: data.profilePicture,
         phone: data.phone.replace(/[^0-9]+/g, '').replace(/^(\d{2})(9?\d{4})(\d{4})$/, '($1) $2-$3'),
       };
-
+      
       try {
         await updateEnrollment(newData);
         setUpdatePage(!updatePage);
@@ -94,7 +94,7 @@ export function PersonalInfo() {
       </LeftContainer>
       <Line className = 'gradientDiv'/>
       <RightContainer>
-        <h1>PERSONAL INFORMATION</h1>
+        <Title>PERSONAL INFORMATION</Title>
         <FormContainer onSubmit={handleSubmit}>
           <InputContainer>
             <h1>Name</h1>
@@ -106,6 +106,7 @@ export function PersonalInfo() {
               onChange={ e => { compareChanges(handleChange('name')(e)); } }
               disabled = {updateEnrollmentLoading}
             />
+            {errors.name && <Error>{errors.name}</Error>}
           </InputContainer>
           <InputContainer>
             <h1>Birthdate</h1>
@@ -117,6 +118,7 @@ export function PersonalInfo() {
               onChange={ e => {  compareChanges(handleChange('birthday', (d) => d && formatDate(d))(e)); } }
               disabled = {updateEnrollmentLoading}
             />
+            {errors.birthday && <Error>{errors.birthday}</Error>}
           </InputContainer>
           <InputContainer>
             <h1>Phone</h1>
@@ -128,6 +130,7 @@ export function PersonalInfo() {
               onChange={ e => { compareChanges(handleChange('phone', (d) => d && formatPhone(d))(e)); } }
               disabled = {updateEnrollmentLoading}
             />
+            {errors.phone && <Error>{errors.phone}</Error>}
           </InputContainer>
           <InputContainer>
             <h1>Profile Picture</h1>
@@ -139,6 +142,7 @@ export function PersonalInfo() {
               onChange={e => { compareChanges(handleChange('profilePicture')(e)); }}
               disabled = {updateEnrollmentLoading}
             />
+            {errors.profilePicture && <Error>{errors.profilePicture}</Error>}
           </InputContainer>
           <InputContainer>
             <div>
@@ -154,8 +158,13 @@ export function PersonalInfo() {
               <Button pulse={pulse} type="submit" className='not-allowed'>
                 <Loading/>
               </Button>:
-              <Button pulse={pulse} type="submit" disabled = {!pulse || updateEnrollmentLoading} className = {pulse && !updateEnrollmentLoading ? '' : 'not-allowed'}>
-                <h1>Save</h1>
+              <Button
+                pulse={pulse} 
+                type="submit" 
+                disabled = {!pulse || updateEnrollmentLoading} 
+                className = {pulse && !updateEnrollmentLoading ? '' : 'not-allowed'}
+              >
+                <h1>Save Info</h1>
               </Button>
             }
           </SubmitContainer>
@@ -175,20 +184,27 @@ export const SubmitContainer = styled.div`
   cursor: pointer;
 `;
 
+const Error = styled.p`
+  font-size: 15px;
+  color: #ffffffb5;
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-style: italic;
+  text-decoration: underline;
+`;
+
 interface ButtonProps {
   pulse: boolean;
 }
 
 export const Button = styled.button<ButtonProps>`
-  font-family: "Roboto";
-  font-weight: 700;
   width: 70%;
   height: 45px;
   animation: ${MoovingBackground} 5s ease infinite, ${({ pulse }) => pulse ? Pulse : 'none'} ${({ pulse }) => pulse ? '1000ms ease infinite' : ''};
   background-size: 300% 100%;
   background-image: ${LightGradientFour};
   border-radius: 16px;
-  box-shadow: 7px 3px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(4.6px);
   -webkit-backdrop-filter: blur(4.6px);
   border: 0px solid rgba(252, 252, 252, 0.2);
@@ -197,8 +213,10 @@ export const Button = styled.button<ButtonProps>`
   justify-content: center;
   margin-top: 10px;
   h1{
-    color: #ffffffc8;
+    font-family: "Roboto";
     font-weight: 700;
+    color: #ffffffc8;
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.6));
   }
   cursor: inherit !important;
 `;
@@ -224,12 +242,14 @@ export const FormContainer = styled.form`
 
 export const InputContainer = styled.div`
   box-sizing: border-box;
+  height: 100px;
   width: 250px;
   animation: ${MoovingBackground} 5s ease infinite;
   background-size: 300% 100%;
   background-image: ${GradientFour};
   border-radius: 16px;
   padding: 10px 10px;
+  box-shadow: 7px 3px 15px rgba(0, 0, 0, 0.3);
   &:hover{
     background-image: ${GradientFour};
   }
@@ -256,9 +276,12 @@ export const Input = styled.input`
   border-bottom: 1px solid white;
   font-family: 'Roboto';
   font-weight: 700;
+  border-radius: 16px;
   color: white;
   opacity: 0.5;
   font-size: 20px;
+  box-shadow: 0px 20px 15px rgba(0, 0, 0, 0.4);
+  padding-left: 10px;
   &::placeholder {
     font-family: 'Roboto';
     font-weight: 700;
@@ -273,11 +296,13 @@ export const RightContainer = styled.div`
     flex-direction: column;
     padding: 30px 30px;
     gap: 30px;
-    h1{
-      font-size: 25px;
-      font-weight: 700;
-    }
     width: 70%;
+`;
+
+export const Title = styled.h1`
+  font-size: 25px;
+  font-weight: 700;
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.6));
 `;
 
 export const LeftContainer = styled.div`

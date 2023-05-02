@@ -10,8 +10,8 @@ const validations: ValidationsParams = {
 
   phone: {
     custom: {
-      isValid: (value: string) => parseInt(value?.length.toString(), 10) >= 14,
-      message: 'Type a valid name',
+      isValid: (value: string) => parseInt(value?.length.toString(), 10) >= 15,
+      message: 'Type a valid phone number',
     },
   },
 

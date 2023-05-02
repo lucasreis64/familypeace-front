@@ -9,6 +9,10 @@ export type userDataParams =
   token: string,
 };
 
+export type ErrorsParams = {
+  [key: string]: string;
+}
+
 export type UpdateEnrollmentParams = {
   name: string;
   birthday: string;

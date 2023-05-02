@@ -89,7 +89,7 @@ export const Input = styled.input`
   background-image: ${LightGradientFour};
   border-radius: 16px;
   box-shadow: 7px 3px 15px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(4.6px);
+  backdrop-filter: blur(4.6px);
   -webkit-backdrop-filter: blur(4.6px);
   border: 0px solid #cadbe9;
   color: rgba(252, 253, 253, 0.7);

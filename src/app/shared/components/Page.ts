@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { MoovingBackground } from '../animations/animations';
-import { GradientFour, LightGradientFour } from '../constants';
+import { GradientFour } from '../constants';
 
 interface DivProps {
   height?: string;

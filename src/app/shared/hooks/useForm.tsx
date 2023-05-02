@@ -1,9 +1,10 @@
 import { ChangeEvent, useState } from 'react';
-import { UseFormParams } from '../../../protocols';
+import { toast } from 'react-toastify';
+import { ErrorsParams, UseFormParams } from '../../../protocols';
 
 export const useForm = (options: UseFormParams) => {
   const [data, setData] = useState(options?.initialValues || {});
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<ErrorsParams>({});
 
   const handleChange = (key: string, sanitizeFn?: (param: string) => string) => (e: ChangeEvent<HTMLInputElement>) => {
     const value = sanitizeFn ? sanitizeFn(e.target.value) : e.target.value;
@@ -31,7 +32,7 @@ export const useForm = (options: UseFormParams) => {
     const validations = options?.validations;
     if (validations) {
       let valid = true;
-      const newErrors = {} as any;
+      const newErrors = {} as ErrorsParams;
       for (const key in validations) {
         const value = data[key];
         const validation = validations[key];
@@ -55,8 +56,12 @@ export const useForm = (options: UseFormParams) => {
 
       if (!valid) {
         setErrors(newErrors);
-        console.log(newErrors);
-        return;
+        if( Object.keys(newErrors).length > 0) {
+          for (const prop in newErrors) {
+            toast.error(newErrors[prop]);
+          }
+        }
+        return newErrors;
       }
     }
 
