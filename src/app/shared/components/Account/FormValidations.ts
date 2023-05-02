@@ -17,7 +17,7 @@ const validations: ValidationsParams = {
 
   birthday: {
     custom: {
-      isValid: (value: string) => isValidDate(value),
+      isValid: (value: string) => isValidString(value),
       message: 'Type a valid birthdate',
     },
   },
@@ -37,23 +37,3 @@ function isValidString(value: string) {
     return true;
   return false;
 }
-
-function isValidDate(dateString: string): boolean {
-  const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-  if (!dateRegex.test(dateString)) {
-    return false;
-  }
-  const date = new Date(dateString);
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-
-  if (
-    year.toString() !== dateString.substring(0, 4) ||
-    month.toString().padStart(2, '0') !== dateString.substring(5, 7) ||
-    day.toString().padStart(2, '0') !== dateString.substring(8, 10)
-  ) {
-    return false;
-  }
-  return true;
-};

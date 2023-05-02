@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from 'react';
-import { InputEvent, UseFormParams } from '../../../protocols';
+import { UseFormParams } from '../../../protocols';
 
 export const useForm = (options: UseFormParams) => {
   const [data, setData] = useState(options?.initialValues || {});
@@ -12,6 +12,10 @@ export const useForm = (options: UseFormParams) => {
       ...data,
       [key]: value,
     });
+    return {
+      ...data,
+      [key]: value,
+    };
   };
 
   const customHandleChange = (key: string, sanitizeFn: (param: string) => string) => (inputValue: string) => {
@@ -22,7 +26,7 @@ export const useForm = (options: UseFormParams) => {
     });
   };
 
-  const handleSubmit = async(event: InputEvent) => {
+  const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const validations = options?.validations;
     if (validations) {
@@ -51,6 +55,7 @@ export const useForm = (options: UseFormParams) => {
 
       if (!valid) {
         setErrors(newErrors);
+        console.log(newErrors);
         return;
       }
     }

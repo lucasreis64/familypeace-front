@@ -1,8 +1,6 @@
 import useAsync from '../useAsync';
 import useToken from '../useToken';
-
 import * as enrollmentApi from '../../services/enrollmentApi';
-import { UpdateEnrollmentParams } from '../../../../protocols';
 
 export default function useEnrollment() {
   const token = useToken();
@@ -18,6 +16,6 @@ export default function useEnrollment() {
     enrollment,
     enrollmentLoading,
     enrollmentError,
-    getEnrollment
+    getEnrollment,
   };
 }
