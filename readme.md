@@ -7,8 +7,8 @@ This is a web application built with Vite, React and TypeScript. It provides a p
 To get started with the project, clone this repository and navigate to the project directory.
 
 ```bash
-git clone <repository-url>
-cd family-peace
+git clone https://github.com/lucasreis64/familypeace-front.git
+cd familypeace-front
 ```
 
 ### Installation
