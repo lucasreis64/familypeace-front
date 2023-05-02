@@ -153,7 +153,7 @@ export function PersonalInfo() {
             <div>
               <h1>Family</h1>
               <Input 
-                value={data?.family || 'NOT FOUND'}
+                value={enrollment?.family.toUpperCase() || 'NOT FOUND'}
                 disabled
               />
             </div>
