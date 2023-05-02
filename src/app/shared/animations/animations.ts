@@ -263,3 +263,117 @@ export const Pulse = keyframes`
         transform: scale3d(1, 1, 1);
     }
 `;
+
+export const RubberBand = keyframes`
+    from {
+        transform: scale3d(1, 1, 1);
+    }
+
+    30% {
+        transform: scale3d(1.25, 0.75, 1);
+    }
+
+    40% {
+        transform: scale3d(0.75, 1.25, 1);
+    }
+
+    50% {
+        transform: scale3d(1.15, 0.85, 1);
+    }
+
+    65% {
+        transform: scale3d(.95, 1.05, 1);
+    }
+
+    75% {
+        transform: scale3d(1.05, .95, 1);
+    }
+
+    to {
+        transform: scale3d(1, 1, 1);
+    }
+`;
+
+export const FlipInX = keyframes`
+    from {
+        transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+        animation-timing-function: ease-in;
+        opacity: 0;
+        }
+
+        40% {
+        transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+        animation-timing-function: ease-in;
+        }
+
+        60% {
+        transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+        opacity: 1;
+        }
+
+        80% {
+        transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+        }
+
+        to {
+        transform: perspective(400px);
+        }
+`;
+
+export const FlipOutX = keyframes`
+    from {
+        transform: perspective(400px);
+    }
+
+    30% {
+        transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+        opacity: 1;
+    }
+
+    to {
+        transform: perspective(400px) rotate3d(1, 0, 0, 240deg);
+        opacity: 0;
+    }
+`;
+
+export const FlipInXMod = keyframes`
+    from {
+        transform: perspective(400px) rotateX(180deg) rotateY(180deg);
+        opacity: 0;
+    }
+    20% {
+        transform: perspective(400px) rotate3d(1, 0, 0, 240deg);
+        opacity: 0;
+    }
+    to {
+        transform: perspective(400px) rotate3d(1, 0, 0, 360deg);
+        animation-timing-function: ease-in;
+        opacity: 1;
+    }
+`;
+
+export const ZoomIn = keyframes`
+    from {
+        opacity: 0;
+        transform: scale3d(.3, .3, .3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+`;
+
+export const ZoomOut = keyframes`
+    from {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+        transform: scale3d(.3, .3, .3);
+    }
+
+    to {
+        opacity: 0;
+    }
+`;

@@ -2,6 +2,7 @@ import { Page } from '../components/Page';
 import React from 'react';
 import styled from 'styled-components';
 import Container from '../components/Container';
+import { ZoomIn } from '../animations/animations';
 
 interface AuthProps {
   children: React.ReactNode;
@@ -19,6 +20,7 @@ export const DashboardLayout: React.FC<AuthProps> = ({ children, dropAnimation }
 };
 
 const StyledContainer = styled(Container)`
+  animation: ${ZoomIn} 1000ms;
   display: flex;
   justify-content: flex-start;
   align-items: stretch;

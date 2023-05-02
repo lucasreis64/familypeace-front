@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import useSignUp from '../../shared/hooks/api/useSignUp';
-import lotusFlower from '../../assets/images/lotusflower-spaced.png';
 import { Button, Input, Loading, LogoComplete, LotusFlower, P } from '../../shared/components/Auth';
 import { AuthLayout } from '../../shared/layouts/Auth';
 

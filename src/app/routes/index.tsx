@@ -31,7 +31,7 @@ export const Routes = () => {
               <Route path="family" element={<Family />} />
               <Route path="tasks" element={<Tasks />} />
               <Route path="agenda" element={<Agenda />} />
-              <Route index path="*" element={<Navigate to="/dashboard/tasks" />} />
+              <Route index path="*" element={<Navigate to="/dashboard/account" />} />
             </Route>
             <Route path="*" element={<Navigate to="/sign-in" />} />
           </Paths>

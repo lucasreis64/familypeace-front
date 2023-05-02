@@ -16,12 +16,14 @@ export function Dashboard() {
       <Container key = { routeName }>
         <Header/>
         <Outlet/>
+        <Authoral>Designed and Developed by: Lucas Reis</Authoral>
       </Container>
     </DashboardLayout>
   );
 };
 
 const Container = styled.div`
+  position: relative;
   animation: ${Opacity} 500ms;
   padding: 30px;
   height: 100%;
@@ -37,4 +39,12 @@ const Container = styled.div`
     height: calc(100vh - 80px);
     padding: 20px;
   }
+`;
+
+const Authoral = styled.h1`
+  position: absolute;
+  font-size: 12px;
+  height: 13px;
+  bottom: 10px;
+  right: 20px;
 `;

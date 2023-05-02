@@ -12,7 +12,7 @@ import { formatDate } from '../../../../helpers/dateFormatter';
 import { formatPhone } from '../../../../helpers/phoneFormatter';
 import { exclude } from '../../../../helpers/excludeKey';
 import { isObjectEqual } from '../../../../helpers/objectComparator';
-import { ErrorsParams, UpdateEnrollmentParams } from '../../../../protocols';
+import { UpdateEnrollmentParams } from '../../../../protocols';
 import { Loading } from '../Auth';
 import { DashboardContext } from '../../contexts/DashboardContext';
 
@@ -39,7 +39,7 @@ export function PersonalInfo() {
         profilePicture: data.profilePicture,
         phone: data.phone.replace(/[^0-9]+/g, '').replace(/^(\d{2})(9?\d{4})(\d{4})$/, '($1) $2-$3'),
       };
-      
+
       try {
         await updateEnrollment(newData);
         setUpdatePage(!updatePage);
@@ -215,10 +215,19 @@ export const Button = styled.button<ButtonProps>`
   h1{
     font-family: "Roboto";
     font-weight: 700;
-    color: #ffffffc8;
+    color: #ffffff58;
     filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.6));
   }
   cursor: inherit !important;
+  &:hover{
+    background-image: ${GradientFour};
+    transition: 200ms;
+    width: 72%;
+    height: 48px;
+    h1{
+      
+    }
+  }
 `;
 
 export const Container = styled.div`
@@ -251,7 +260,8 @@ export const InputContainer = styled.div`
   padding: 10px 10px;
   box-shadow: 7px 3px 15px rgba(0, 0, 0, 0.3);
   &:hover{
-    background-image: ${GradientFour};
+    background-image: ${LightGradientFour};
+    transition: 200ms;
   }
   h1{
     font-size: 20px !important;
@@ -279,7 +289,7 @@ export const Input = styled.input`
   border-radius: 16px;
   color: white;
   opacity: 0.5;
-  font-size: 20px;
+  font-size: 17px;
   box-shadow: 0px 20px 15px rgba(0, 0, 0, 0.4);
   padding-left: 10px;
   &::placeholder {

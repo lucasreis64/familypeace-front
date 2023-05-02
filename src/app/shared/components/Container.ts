@@ -4,6 +4,7 @@ interface DivProps {
   height?: string;
   width?: string;
   dropAnimation?: boolean;
+  nextPageAnimation?: boolean;
 }
 
 export default styled.div<DivProps>`

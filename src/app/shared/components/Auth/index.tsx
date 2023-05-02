@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { MoovingBackground, tremerZoom, ZoomInDownAnimation, ZoomInLeftAnimation, ZoomOutDownAnimation } from '../../animations/animations';
+import { MoovingBackground, tremerZoom, ZoomInDownAnimation, ZoomInLeftAnimation, ZoomOut, ZoomOutDownAnimation } from '../../animations/animations';
 import { ThreeDots } from 'react-loader-spinner';
 import Container from '../Container';
 import { time } from '../../../pages/Sign-in';
@@ -15,7 +15,7 @@ export const StyledContainer = styled(Container)`
   justify-content: center;
   padding: 30px;
   box-sizing: border-box;
-  animation: ${ props =>  props.dropAnimation ? ZoomOutDownAnimation : ZoomInDownAnimation } ${ props =>  props.dropAnimation ? '1000ms' : '1000ms' };
+  animation: ${ props =>  props.dropAnimation ? ZoomOutDownAnimation : ZoomInDownAnimation } ${ props =>  props.dropAnimation ? '1000ms' : '1000ms' }, ${ props =>  props.nextPageAnimation ?  ZoomOut : 'none' } ${ props =>  props.nextPageAnimation ? '1000ms' : '' };
   background: rgba(0, 0, 0, 0.5);
   border-radius: 16px;
   box-shadow: 10px 20px 30px rgba(0, 0, 0, 0.5);

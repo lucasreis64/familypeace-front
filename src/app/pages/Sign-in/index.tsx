@@ -14,6 +14,7 @@ export const SignIn = () => {
   const [stayLoggedIn, setStayLoggedIn] = useState(false);
   const { setUserData, setContextUserData } = useContext(UserContext);
   const [ dropAnimation, setDropAnimation ] = useState(false);
+  const [ nextPageAnimation, setNextPageAnimation ] = useState(false);
   const navigate = useNavigate();
   timeMs = 900;
   
@@ -21,11 +22,13 @@ export const SignIn = () => {
     event.preventDefault();
     try {
       const userData = await signIn(email, password);
-      setContextUserData(userData);
-      if(stayLoggedIn)
-        setUserData(userData);
+      setNextPageAnimation(true);
+      setTimeout(() => {
+        setContextUserData(userData);
+        if(stayLoggedIn)
+          setUserData(userData);
+      }, 1000);
       toast.success('Login realizado com sucesso!');
-      navigate('/dashboard');
     } catch (err) {
       toast.error('Não foi possível fazer o login!');
     }
@@ -41,7 +44,7 @@ export const SignIn = () => {
   }
 
   return (
-    <AuthLayout dropAnimation = {dropAnimation}>
+    <AuthLayout dropAnimation = {dropAnimation} nextPageAnimation = {nextPageAnimation}>
       <LogoComplete loading = { signInLoading.toString() }>
         <LotusFlower className='lotus'/>
         <h1>FamilyPeace</h1>
