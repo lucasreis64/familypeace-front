@@ -58,6 +58,8 @@ export function PersonalInfo() {
     },
   });
 
+  console.log(enrollment, enrollmentLoading);
+
   useEffect(() => {
     if (enrollment) {
       setData({
@@ -97,7 +99,7 @@ export function PersonalInfo() {
       <RightContainer>
         <Title>PERSONAL INFORMATION</Title>
         <FormContainer onSubmit={handleSubmit}>
-          <InputContainer load = {enrollmentLoading}>
+          <InputContainer load = {enrollmentLoading || enrollment === null}>
             <h1>Name</h1>
             <Input
               placeholder="Your name"
@@ -107,10 +109,10 @@ export function PersonalInfo() {
               onChange={ e => { compareChanges(handleChange('name')(e)); } }
               disabled = {updateEnrollmentLoading}
             />
-            {enrollmentLoading ? <LoadingInput/> : ''}
+            {enrollmentLoading || enrollment === null ? <LoadingInput/> : ''}
             {errors.name && <Error>{errors.name}</Error>}
           </InputContainer>
-          <InputContainer  load = {enrollmentLoading}>
+          <InputContainer  load = {enrollmentLoading || enrollment === null}>
             <h1>Birthdate</h1>
             <Input
               placeholder="Your Birthdate"
@@ -120,10 +122,10 @@ export function PersonalInfo() {
               onChange={ e => {  compareChanges(handleChange('birthday', (d) => d && formatDate(d))(e)); } }
               disabled = {updateEnrollmentLoading}
             />
-            {enrollmentLoading ? <LoadingInput/> : ''}
+            {enrollmentLoading || enrollment === null ? <LoadingInput/> : ''}
             {errors.birthday && <Error>{errors.birthday}</Error>}
           </InputContainer>
-          <InputContainer  load = {enrollmentLoading}>
+          <InputContainer  load = {enrollmentLoading || enrollment === null}>
             <h1>Phone</h1>
             <Input
               placeholder="Your Phone"
@@ -133,10 +135,10 @@ export function PersonalInfo() {
               onChange={ e => { compareChanges(handleChange('phone', (d) => d && formatPhone(d))(e)); } }
               disabled = {updateEnrollmentLoading}
             />
-            {enrollmentLoading ? <LoadingInput/> : ''}
+            {enrollmentLoading || enrollment === null ? <LoadingInput/> : ''}
             {errors.phone && <Error>{errors.phone}</Error>}
           </InputContainer>
-          <InputContainer  load = {enrollmentLoading}>
+          <InputContainer  load = {enrollmentLoading || enrollment === null}>
             <h1>Profile Picture</h1>
             <Input
               placeholder="Picture url"
@@ -146,18 +148,18 @@ export function PersonalInfo() {
               onChange={e => { compareChanges(handleChange('profilePicture')(e)); }}
               disabled = {updateEnrollmentLoading}
             />
-            {enrollmentLoading ? <LoadingInput/> : ''}
+            {enrollmentLoading || enrollment === null ? <LoadingInput/> : ''}
             {errors.profilePicture && <Error>{errors.profilePicture}</Error>}
           </InputContainer>
-          <InputContainer  load = {enrollmentLoading}>
+          <InputContainer  load = {enrollmentLoading || enrollment === null}>
             <div>
               <h1>Family</h1>
               <Input 
-                value={enrollment?.family.toUpperCase() || 'NOT FOUND'}
+                value={enrollment?.family || 'NOT FOUND'}
                 disabled
               />
             </div>
-            {enrollmentLoading ? <LoadingInput/> : ''}
+            {enrollmentLoading || enrollment === null  ? <LoadingInput/> : ''}
           </InputContainer>
           <SubmitContainer>
             {updateEnrollmentLoading ?

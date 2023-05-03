@@ -63,7 +63,7 @@ const Container = styled.div`
   width: 70px;
   height: 100%;
   border-right: px solid black;
-  background: rgba(8, 8, 8, 0.3);
+  background: rgba(38, 16, 88, 0.4);
   backdrop-filter: blur(0.8px);
   -webkit-backdrop-filter: blur(0.8px);
   transition: 500ms;

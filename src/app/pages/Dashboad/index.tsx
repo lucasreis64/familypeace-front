@@ -30,7 +30,7 @@ const Container = styled.div`
   height: 100%;
   width: 100%;
   overflow-y: auto;
-  background: rgba(12, 12, 12, 0.5);
+  background: rgba(12, 12, 12, 0.8);
   display: flex;
   flex-direction: column;
   gap: 20px;
