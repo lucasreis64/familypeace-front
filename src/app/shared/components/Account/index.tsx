@@ -97,7 +97,7 @@ export function PersonalInfo() {
       <RightContainer>
         <Title>PERSONAL INFORMATION</Title>
         <FormContainer onSubmit={handleSubmit}>
-          <InputContainer loading = {enrollmentLoading}>
+          <InputContainer load = {enrollmentLoading}>
             <h1>Name</h1>
             <Input
               placeholder="Your name"
@@ -110,7 +110,7 @@ export function PersonalInfo() {
             {enrollmentLoading ? <LoadingInput/> : ''}
             {errors.name && <Error>{errors.name}</Error>}
           </InputContainer>
-          <InputContainer  loading = {enrollmentLoading}>
+          <InputContainer  load = {enrollmentLoading}>
             <h1>Birthdate</h1>
             <Input
               placeholder="Your Birthdate"
@@ -123,7 +123,7 @@ export function PersonalInfo() {
             {enrollmentLoading ? <LoadingInput/> : ''}
             {errors.birthday && <Error>{errors.birthday}</Error>}
           </InputContainer>
-          <InputContainer  loading = {enrollmentLoading}>
+          <InputContainer  load = {enrollmentLoading}>
             <h1>Phone</h1>
             <Input
               placeholder="Your Phone"
@@ -136,7 +136,7 @@ export function PersonalInfo() {
             {enrollmentLoading ? <LoadingInput/> : ''}
             {errors.phone && <Error>{errors.phone}</Error>}
           </InputContainer>
-          <InputContainer  loading = {enrollmentLoading}>
+          <InputContainer  load = {enrollmentLoading}>
             <h1>Profile Picture</h1>
             <Input
               placeholder="Picture url"
@@ -149,7 +149,7 @@ export function PersonalInfo() {
             {enrollmentLoading ? <LoadingInput/> : ''}
             {errors.profilePicture && <Error>{errors.profilePicture}</Error>}
           </InputContainer>
-          <InputContainer  loading = {enrollmentLoading}>
+          <InputContainer  load = {enrollmentLoading}>
             <div>
               <h1>Family</h1>
               <Input 
@@ -269,7 +269,7 @@ export const FormContainer = styled.form`
 `;
 
 interface InputContainerProps {
-  loading: boolean;
+  load: boolean;
 }
 
 export const InputContainer = styled.div<InputContainerProps>`
@@ -295,7 +295,7 @@ export const InputContainer = styled.div<InputContainerProps>`
     }
   }
   input{
-    ${ ({ loading }) => loading ? 'display: none' : ''}
+    ${ ({ load }) => load ? 'display: none' : ''}
   }
   .loading{
     margin-top: 20px;

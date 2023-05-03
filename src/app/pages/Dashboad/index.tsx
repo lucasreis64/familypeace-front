@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Opacity } from '../../shared/animations/animations';
 import { Header } from '../../shared/components/Dashboard/Header';
 import { NavBar } from '../../shared/components/Dashboard/NavBar';
+import { LightGradientFour } from '../../shared/constants';
 import { DashboardContext } from '../../shared/contexts/DashboardContext';
 import { DashboardLayout } from '../../shared/layouts/Dashboard';
 
@@ -47,4 +48,7 @@ const Authoral = styled.h1`
   height: 13px;
   bottom: 10px;
   right: 20px;
+  &:hover{
+    background-image: ${LightGradientFour};
+  }
 `;
