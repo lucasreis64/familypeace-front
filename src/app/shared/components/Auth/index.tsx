@@ -16,7 +16,7 @@ export const StyledContainer = styled(Container)`
   padding: 30px;
   box-sizing: border-box;
   animation: ${ props =>  props.dropAnimation ? ZoomOutDownAnimation : ZoomInDownAnimation } ${ props =>  props.dropAnimation ? '1000ms' : '1000ms' }, ${ props =>  props.nextPageAnimation ?  ZoomOut : 'none' } ${ props =>  props.nextPageAnimation ? '1000ms' : '' };
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.8);
   border-radius: 16px;
   box-shadow: 10px 20px 30px rgba(0, 0, 0, 0.5);
   form{
